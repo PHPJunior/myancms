@@ -4,7 +4,6 @@
     "keywords": ["cms","framework", "laravel"],
     "license": "MIT",
     "type": "cms",
-    "language" : "PHP",
     "authors": [
         {
             "name": "Nyi Nyi Lwin",
