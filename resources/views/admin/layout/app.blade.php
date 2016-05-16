@@ -8,7 +8,7 @@
     <meta name="description" content="Challenger One-Stop IT Solutins">
     <meta name="author" content="Nyi Nyi Lwin">
 
-    <title>Myan CMS</title>
+    <title>MyanCMS</title>
     <!-- Icons -->
     <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
     <link rel="shortcut icon" href="{{ asset('backend/img/favicons/favicon.png') }}">
@@ -29,6 +29,9 @@
     <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('backend/img/favicons/apple-touch-icon-144x144.png') }}">
     <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('backend/img/favicons/apple-touch-icon-152x152.png') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('backend/img/favicons/apple-touch-icon-180x180.png') }}">
+    <!-- END Icons -->
+    <!-- END Icons -->
+
 
     <!-- weather icons -->
     <link rel="stylesheet" href="{{ asset('/backend/bower_components/weather-icons/css/weather-icons.min.css') }}" media="all">
@@ -57,6 +60,8 @@
 
     <link rel="stylesheet" href="{{ asset('backend/skins/jquery-ui/material/jquery-ui.min.css') }}">
 
+    <!-- additional styles for plugins -->
+    <!-- kendo UI -->
     <link rel="stylesheet" href="{{ asset('/backend/bower_components/kendo-ui/styles/kendo.common-material.min.css') }}"/>
 
     <link rel="stylesheet" href="{{ asset('/backend/bower_components/kendo-ui/styles/kendo.material.min.css') }}"/>
@@ -102,7 +107,6 @@
         s.parentNode.insertBefore(wf, s);
     })();
 </script>
-
 <script src="{{ asset('backend/js/common.min.js') }}"></script>
 <!-- uikit functions -->
 <script src="{{ asset('backend/js/uikit_custom.min.js') }}"></script>
@@ -127,6 +131,8 @@
 
 <script src="{{ asset('backend/js/pages/page_settings.min.js') }}"></script>
 
+<!-- page specific plugins -->
+<!-- d3 -->
 <script src="{{ asset('/backend/bower_components/d3/d3.min.js') }}"></script>
 <!-- metrics graphics (charts) -->
 <script src="{{ asset('/backend/bower_components/metrics-graphics/dist/metricsgraphics.min.js') }}"></script>
@@ -166,10 +172,17 @@
 
 <script src="{{ asset('/backend/bower_components/jtable/lib/jquery.jtable.min.js') }}"></script>
 
+<!--  diff functions -->
+<script src="{{ asset('backend/js/pages/plugins_crud_table.min.js') }}"></script>
+
+<!-- inputmask-->
+<script src="{{ asset('/backend/bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js') }}"></script>
 
 <!--  forms advanced functions -->
 <script src="{{ asset('backend/js/pages/forms_advanced.js') }}"></script>
 
+<!-- ionrangeslider -->
+<script src="{{ asset('/backend/bower_components/ion.rangeslider/js/ion.rangeSlider.min.js') }}"></script>
 <!-- htmleditor (codeMirror) -->
 <script src="{{ asset('backend/js/uikit_htmleditor_custom.min.js') }}"></script>
 

@@ -3,7 +3,7 @@
     "description": "MyanCMS will kickstart all your future applications.",
     "keywords": ["cms","framework", "laravel"],
     "license": "MIT",
-    "type": "project",
+    "type": "CMS",
     "authors": [
         {
             "name": "Nyi Nyi Lwin",
