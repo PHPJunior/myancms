@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="OWAY HR Solutins">
+    <meta name="description" content="MyanCMS">
     <meta name="author" content="Nyi Nyi Lwin">
 
-    <title>OWAY HR Solutins</title>
+    <title>MyanCMS</title>
     <!-- Icons -->
     <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
     <link rel="shortcut icon" href="{{ asset('backend/img/favicons/favicon.png') }}">
@@ -67,9 +67,6 @@
         <div class="md-card-content large-padding" id="login_form">
             <div class="login_heading">
                 <div class="user_avatar"></div>
-                <p style="text-align: center;font-size: 1.5em;font-weight: 400">
-                    <span style="padding: 8px; border-radius: 6px;">O W A Y</span>&nbsp;&nbsp;<small style="text-align: center;font-weight: 400;font-size: 13px">H R - S O L U T I O N S</small>
-                </p>
             </div>
             @if(\Session::has('status'))
                 <div class="uk-alert uk-alert-danger" data-uk-alert="">
