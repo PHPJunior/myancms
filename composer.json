@@ -4,11 +4,11 @@
     "keywords": ["cms","framework", "laravel"],
     "license": "MIT",
     "type": "cms",
+    "language" : "PHP",
     "authors": [
         {
             "name": "Nyi Nyi Lwin",
             "email": "nyinyilwin1992@hotmail.com",
-            "homepage": "http://myancms.com",
             "role": "Developer"
         }
     ],
