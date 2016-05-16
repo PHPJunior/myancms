@@ -1,5 +1,5 @@
 {
-    "name": "PHPJunior/myancms",
+    "name": "php-junior/myancms",
     "description": "MyanCMS will kickstart all your future applications.",
     "keywords": ["cms","framework", "laravel"],
     "license": "MIT",
