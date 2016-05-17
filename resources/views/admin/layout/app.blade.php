@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Challenger One-Stop IT Solutins">
     <meta name="author" content="Nyi Nyi Lwin">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>MyanCMS</title>
     <!-- Icons -->
     <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
@@ -75,7 +75,7 @@
     </style>
 </head>
 <body class="sidebar_main_open sidebar_main_swipe">
-<input type="hidden" name="csrf-token" value="{{ csrf_token() }}">
+
 <!-- main header -->
 @include('admin.layout.header')
         <!-- main header end -->
@@ -107,90 +107,40 @@
         s.parentNode.insertBefore(wf, s);
     })();
 </script>
+
 <script src="{{ asset('backend/js/common.min.js') }}"></script>
-<!-- uikit functions -->
 <script src="{{ asset('backend/js/uikit_custom.min.js') }}"></script>
-<!-- altair common functions/helpers -->
 <script src="{{ asset('backend/js/altair_admin_common.min.js') }}"></script>
-
 <script src="{{ asset('backend/js/pages/components_notifications.min.js') }}"></script>
-<!--  contact list functions -->
 <script src="{{ asset('backend/js/pages/page_contact_list.min.js') }}"></script>
-
-<!-- datatables -->
-<script src="{{ asset('/backend/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
-<!-- datatables colVis-->
-<script src="{{ asset('/backend/bower_components/datatables-colvis/js/dataTables.colVis.js') }}"></script>
-<!-- datatables tableTools-->
-<script src="{{ asset('/backend/bower_components/datatables-tabletools/js/dataTables.tableTools.js') }}"></script>
-<!-- datatables custom integration -->
+<script src="{{ asset('backend/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('backend/bower_components/datatables-colvis/js/dataTables.colVis.js') }}"></script>
+<script src="{{ asset('backend/bower_components/datatables-tabletools/js/dataTables.tableTools.js') }}"></script>
 <script src="{{ asset('backend/js/custom/datatables_uikit.min.js') }}"></script>
-
-<!--  datatables functions -->
 <script src="{{ asset('backend/js/pages/plugins_datatables.min.js') }}"></script>
-
 <script src="{{ asset('backend/js/pages/page_settings.min.js') }}"></script>
-
-<!-- page specific plugins -->
-<!-- d3 -->
-<script src="{{ asset('/backend/bower_components/d3/d3.min.js') }}"></script>
-<!-- metrics graphics (charts) -->
-<script src="{{ asset('/backend/bower_components/metrics-graphics/dist/metricsgraphics.min.js') }}"></script>
-<!-- chartist (charts) -->
-<script src="{{ asset('/backend/bower_components/chartist/dist/chartist.min.js') }}"></script>
-<!-- maplace (google maps) -->
-<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-<script src="{{ asset('/backend/bower_components/maplace.js/src/maplace-0.1.3.js') }}"></script>
-<!-- peity (small charts) -->
-<script src="{{ asset('/backend/bower_components/peity/jquery.peity.min.js') }}"></script>
-<!-- easy-pie-chart (circular statistics) -->
-<script src="{{ asset('/backend/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js') }}"></script>
-<!-- countUp -->
-<script src="{{ asset('/backend/bower_components/countUp.js/countUp.min.js') }}"></script>
-<!-- handlebars.js -->
-<script src="{{ asset('/backend/bower_components/handlebars/handlebars.min.js') }}"></script>
+<script src="{{ asset('backend/bower_components/d3/d3.min.js') }}"></script>
+<script src="{{ asset('backend/bower_components/metrics-graphics/dist/metricsgraphics.min.js') }}"></script>
+<script src="{{ asset('backend/bower_components/chartist/dist/chartist.min.js') }}"></script>
+<script src="{{ asset('backend/bower_components/maplace.js/src/maplace-0.1.3.js') }}"></script>
+<script src="{{ asset('backend/bower_components/peity/jquery.peity.min.js') }}"></script>
+<script src="{{ asset('backend/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js') }}"></script>
+<script src="{{ asset('backend/bower_components/countUp.js/countUp.min.js') }}"></script>
+<script src="{{ asset('backend/bower_components/handlebars/handlebars.min.js') }}"></script>
 <script src="{{ asset('backend/js/custom/handlebars_helpers.min.js') }}"></script>
-<!-- CLNDR -->
-<script src="{{ asset('/backend/bower_components/clndr/src/clndr.js') }}"></script>
-<!-- fitvids -->
-<script src="{{ asset('/backend/bower_components/fitvids/jquery.fitvids.js') }}"></script>
-
-<!--  dashbord functions -->
+<script src="{{ asset('backend/bower_components/clndr/src/clndr.js') }}"></script>
+<script src="{{ asset('backend/bower_components/fitvids/jquery.fitvids.js') }}"></script>
 <script src="{{ asset('backend/js/pages/dashboard.min.js') }}"></script>
-
-<!-- fullcalendar -->
-<script src="{{ asset('/backend/bower_components/fullcalendar/dist/fullcalendar.min.js') }}"></script>
-
-<!--  calendar functions -->
+<script src="{{ asset('backend/bower_components/fullcalendar/dist/fullcalendar.min.js') }}"></script>
 <script src="{{ asset('backend/js/pages/plugins_fullcalendar.min.js') }}"></script>
-
-<!-- page specific plugins -->
-<!-- JQuery-UI -->
-
-<script src="{{ asset('/backend/bower_components/jquery-ui/jquery-ui.min.js') }}"></script>
-<!-- jTable -->
-
-<script src="{{ asset('/backend/bower_components/jtable/lib/jquery.jtable.min.js') }}"></script>
-
-<!--  diff functions -->
+<script src="{{ asset('backend/bower_components/jquery-ui/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('backend/bower_components/jtable/lib/jquery.jtable.min.js') }}"></script>
 <script src="{{ asset('backend/js/pages/plugins_crud_table.min.js') }}"></script>
-
-<!-- inputmask-->
-<script src="{{ asset('/backend/bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js') }}"></script>
-
-<!--  forms advanced functions -->
+<script src="{{ asset('backend/bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js') }}"></script>
 <script src="{{ asset('backend/js/pages/forms_advanced.js') }}"></script>
-
-<!-- ionrangeslider -->
-<script src="{{ asset('/backend/bower_components/ion.rangeslider/js/ion.rangeSlider.min.js') }}"></script>
-<!-- htmleditor (codeMirror) -->
+<script src="{{ asset('backend/bower_components/ion.rangeslider/js/ion.rangeSlider.min.js') }}"></script>
 <script src="{{ asset('backend/js/uikit_htmleditor_custom.min.js') }}"></script>
-
-<!-- page specific plugins -->
-<!-- kendo UI -->
 <script src="{{ asset('backend/js/kendoui_custom.min.js') }}"></script>
-
-<!--  kendoui functions -->
 <script src="{{ asset('backend/js/pages/kendoui.js') }}"></script>
 <script>
     $(function() {
@@ -359,7 +309,7 @@
 <script>
     $.ajaxSetup({
         headers: {
-            'X-CSRF-TOKEN': $('input[name="csrf-token"]').attr('value')
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
 </script>

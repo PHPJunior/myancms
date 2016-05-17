@@ -16,7 +16,7 @@
         "laravel/framework": "5.2.*",
         "cartalyst/sentinel": "2.0.*",
         "laravelcollective/html": "5.2.*",
-        "rachidlaasri/laravel-installer": "1.4.1"
+        "cartalyst/tags": "2.0.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

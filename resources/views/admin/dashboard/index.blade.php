@@ -15,13 +15,13 @@
                             @if(Sentinel::hasAccess('admin'))
                                 <a href="{{ url('admin') }}">
                                     <span class="uk-text-muted uk-text-small">User List</span>
-                                    <h2 class="uk-margin-remove"><span class="countUpMe">0<noscript>{{ $count }}</noscript></span>
+                                    <h2 class="uk-margin-remove"><span class="countUpMe">{{ $count }}<noscript>{{ $count }}</noscript></span>
                                     </h2>
                                 </a>
                             @else
                                 <a href="#">
                                     <span class="uk-text-muted uk-text-small">User List</span>
-                                    <h2 class="uk-margin-remove"><span class="countUpMe">0<noscript>{{ $count }}</noscript></span>
+                                    <h2 class="uk-margin-remove"><span class="countUpMe">{{ $count }}<noscript>{{ $count }}</noscript></span>
                                     </h2>
                                 </a>
                             @endif

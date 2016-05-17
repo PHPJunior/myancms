@@ -57,7 +57,7 @@ class MakeNewModule extends Command
         $this->files->put($path, $this->buildClass($name, $dummy));
 
         $module = new Module();
-        $module->module_name = $dummy;
+        $module->module_name = strtolower($dummy);
         $module->module_title = $title;
 
         if ($module->save()) {

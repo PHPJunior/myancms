@@ -124,6 +124,51 @@ altair_form_adv = {
             }
         });
 
+        $('#tags').selectize({
+            plugins: {
+                'remove_button': {
+                    label     : ''
+                }
+            },
+            options: [
+                {id: 1, title: 'Mercury'},
+                {id: 2, title: 'Venus' },
+                {id: 3, title: 'Earth' },
+                {id: 4, title: 'Mars' },
+                {id: 5, title: 'Jupiter'},
+                {id: 6, title: 'Saturn' },
+                {id: 7, title: 'Uranus' },
+                {id: 8, title: 'Neptune'}
+            ],
+            maxItems: null,
+            valueField: 'title',
+            labelField: 'title',
+            searchField: 'title',
+            create: true,
+            onDropdownOpen: function($dropdown) {
+                $dropdown
+                    .hide()
+                    .velocity('slideDown', {
+                        begin: function() {
+                            $dropdown.css({'margin-top':'0'})
+                        },
+                        duration: 200,
+                        easing: easing_swiftOut
+                    })
+            },
+            onDropdownClose: function($dropdown) {
+                $dropdown
+                    .show()
+                    .velocity('slideUp', {
+                        complete: function() {
+                            $dropdown.css({'margin-top':''})
+                        },
+                        duration: 200,
+                        easing: easing_swiftOut
+                    })
+            }
+        });
+
         var REGEX_EMAIL = '([a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@' +
             '(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)';
         $('#selec_adv_2').selectize({

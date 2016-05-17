@@ -11,8 +11,27 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::group(['middleware' => 'checkinstall'], function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+});
+
+Route::group(['prefix' => 'install','middleware'=>'checkfile'], function () {
+    Route::get('/','InstallerController@welcome');
+    Route::get('welcome', 'InstallerController@welcome');
+
+    Route::get('environment', 'InstallerController@environment');
+    Route::post('environmentSave','InstallerController@environmentSave');
+
+    Route::get('user', 'InstallerController@user');
+    Route::post('userSave', 'InstallerController@userSave');
+
+    Route::get('setting','InstallerController@setting');
+    Route::post('saveSetting','InstallerController@saveSetting');
+
+    Route::get('finished', 'InstallerController@finished');
 });
 
 Route::group(['namespace' => 'Admin'], function () {
@@ -40,6 +59,7 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::resource('dashboard','DashboardController');
         Route::resource('role','RoleController');
         Route::resource('module','ModuleController');
+        Route::resource('blogs','BlogController');
 
     });
 

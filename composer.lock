@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a5cb8d3e79100472ef9591acc02b55f5",
-    "content-hash": "21c99117c780f909abb0075c214d3b4e",
+    "hash": "760a94110990d18b246ff328edd890ca",
+    "content-hash": "2e823b05ceb98e9ea3ab3c77bd0b7781",
     "packages": [
         {
             "name": "cartalyst/sentinel",
@@ -164,6 +164,59 @@
                 "support"
             ],
             "time": "2015-06-24 13:00:53"
+        },
+        {
+            "name": "cartalyst/tags",
+            "version": "v2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cartalyst/tags.git",
+                "reference": "9c0531ef96d8771fc7a894b3485dd400b48bc819"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cartalyst/tags/zipball/9c0531ef96d8771fc7a894b3485dd400b48bc819",
+                "reference": "9c0531ef96d8771fc7a894b3485dd400b48bc819",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "5.1.*|5.2.*",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.1.*|3.2.*"
+            },
+            "type": "library",
+            "extra": {
+                "component": "package",
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cartalyst\\Tags\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Cartalyst LLC",
+                    "email": "help@cartalyst.com",
+                    "homepage": "https://cartalyst.com"
+                }
+            ],
+            "description": "Easily add tags to your Eloquent models.",
+            "keywords": [
+                "cartalyst",
+                "laravel",
+                "php",
+                "tags"
+            ],
+            "time": "2016-01-10 18:30:57"
         },
         {
             "name": "classpreloader/classpreloader",

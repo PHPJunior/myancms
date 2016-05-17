@@ -1,4 +1,7 @@
 <?php
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -10,6 +13,7 @@ use Illuminate\Support\Facades\Session;
  */
 class SiteHelper
 {
+
     public static function get_user_permission($id)
     {
         $user = Sentinel::findById($id);
@@ -61,4 +65,32 @@ class SiteHelper
             return false;
         }
     }
+
+    public static function getEnvContent()
+    {
+        if (!file_exists(base_path('.env'))) {
+            if (file_exists(base_path('.env.example'))) {
+                copy(base_path('.env.example'), base_path('.env'));
+            } else {
+                touch(base_path('.env'));
+            }
+        }
+
+        return file_get_contents(base_path('.env'));
+    }
+
+    public static function saveEnvFile(Request $input)
+    {
+        $message = trans('messages.environment.success');
+
+        try {
+            file_put_contents(base_path('.env'), $input->get('envConfig'));
+        }
+        catch(Exception $e) {
+            $message = trans('messages.environment.errors');
+        }
+
+        return $message;
+    }
+
 }
