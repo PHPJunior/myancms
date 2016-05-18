@@ -9,8 +9,24 @@
     <link href="{{ asset('installer/css/materialize.css') }}" type="text/css" rel="stylesheet"
           media="screen,projection"/>
     <link href="{{ asset('installer/css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+
+    <style>
+        .cover-image {
+            background-image: url(/installer/img/hero.png);
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            position: fixed;
+        }
+    </style>
+
 </head>
 <body>
+
+<div class="cover-image"></div>
 
 @yield('content')
 

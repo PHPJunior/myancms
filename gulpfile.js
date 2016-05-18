@@ -15,9 +15,6 @@ elixir(function(mix) {
     mix.sass('app.scss');
 
     mix.scripts([
-        'backend/js/common.min.js',
-        'backend/js/uikit_custom.min.js',
-        'backend/js/altair_admin_common.min.js',
         'backend/js/pages/components_notifications.min.js',
         'backend/js/pages/page_contact_list.min.js',
         'backend/bower_components/datatables/media/js/jquery.dataTables.min.js',

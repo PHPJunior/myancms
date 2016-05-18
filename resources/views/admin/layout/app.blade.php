@@ -118,11 +118,9 @@
 <script src="{{ asset('backend/bower_components/datatables-tabletools/js/dataTables.tableTools.js') }}"></script>
 <script src="{{ asset('backend/js/custom/datatables_uikit.min.js') }}"></script>
 <script src="{{ asset('backend/js/pages/plugins_datatables.min.js') }}"></script>
-<script src="{{ asset('backend/js/pages/page_settings.min.js') }}"></script>
 <script src="{{ asset('backend/bower_components/d3/d3.min.js') }}"></script>
 <script src="{{ asset('backend/bower_components/metrics-graphics/dist/metricsgraphics.min.js') }}"></script>
 <script src="{{ asset('backend/bower_components/chartist/dist/chartist.min.js') }}"></script>
-<script src="{{ asset('backend/bower_components/maplace.js/src/maplace-0.1.3.js') }}"></script>
 <script src="{{ asset('backend/bower_components/peity/jquery.peity.min.js') }}"></script>
 <script src="{{ asset('backend/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js') }}"></script>
 <script src="{{ asset('backend/bower_components/countUp.js/countUp.min.js') }}"></script>
@@ -131,17 +129,16 @@
 <script src="{{ asset('backend/bower_components/clndr/src/clndr.js') }}"></script>
 <script src="{{ asset('backend/bower_components/fitvids/jquery.fitvids.js') }}"></script>
 <script src="{{ asset('backend/js/pages/dashboard.min.js') }}"></script>
-<script src="{{ asset('backend/bower_components/fullcalendar/dist/fullcalendar.min.js') }}"></script>
-<script src="{{ asset('backend/js/pages/plugins_fullcalendar.min.js') }}"></script>
 <script src="{{ asset('backend/bower_components/jquery-ui/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('backend/bower_components/jtable/lib/jquery.jtable.min.js') }}"></script>
 <script src="{{ asset('backend/js/pages/plugins_crud_table.min.js') }}"></script>
 <script src="{{ asset('backend/bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js') }}"></script>
 <script src="{{ asset('backend/js/pages/forms_advanced.js') }}"></script>
 <script src="{{ asset('backend/bower_components/ion.rangeslider/js/ion.rangeSlider.min.js') }}"></script>
-<script src="{{ asset('backend/js/uikit_htmleditor_custom.min.js') }}"></script>
+<script src="{{ asset('backend/js/pages/components_nestable.js') }}"></script>
 <script src="{{ asset('backend/js/kendoui_custom.min.js') }}"></script>
 <script src="{{ asset('backend/js/pages/kendoui.js') }}"></script>
+
 <script>
     $(function() {
         // enable hires images

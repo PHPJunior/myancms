@@ -19,7 +19,7 @@ class CreateSiteSettingsTable extends Migration
             $table->text('site_metadesc')->nullable();
             $table->string('company_name')->nullable();
             $table->string('company_email')->nullable();
-            $table->integer('theme');
+            $table->integer('theme')->unsigned();
             $table->text('address')->nullable();
             $table->string('phone')->nullable();
             $table->text('facebook')->nullable();

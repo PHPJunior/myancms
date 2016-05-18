@@ -31,7 +31,7 @@ class CmsController extends Controller
             return view('admin.errors.403');
 
         $this->permission['permission'] = $this->access;
-        return view('admin.cms.index', compact('module_list'), $this->permission);
+        return view('admin.cms.index', $this->permission);
     }
 
     /**

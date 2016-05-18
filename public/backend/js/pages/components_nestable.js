@@ -60,6 +60,7 @@ altair_nestable = {
             $nestable.on('change.uk.nestable',function() {
                 var serialized_data = $nestable.data("nestable").serialize();
                 // check if localStorage is supported
+
                 if (lsTest()) {
                     if( (localStorage.length === 0) || (localStorage.getItem("nestable_items") != JSON.stringify(serialized_data)) ) {
                         localStorage.setItem("nestable_items", JSON.stringify(serialized_data));

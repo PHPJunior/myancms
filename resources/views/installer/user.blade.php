@@ -3,10 +3,10 @@
     <div class="container">
         <div class="section">
             <div class="row">
-                <div class="col s12 m8 offset-m2">
+                <div class="col s12 m10 offset-m1">
                     <div class="card">
                         <div class="card-content">
-                            <form action="{{ url('install/userSave') }}" method="post" id="form_validation"
+                            <form action="{{ url('install/userSave') }}" style="padding: 0px 30px;" method="post" id="form_validation"
                                   class="">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="row">
@@ -86,14 +86,11 @@
                                 </div>
 
                                 <div class="row center">
-                                    <div class="col s12">
-
-                                        <button style="width:100%;"
-                                                class=" btn-large btn-block red waves-attach waves-light">Next Step
-                                        </button>
-
+                                    <div class="col s12 m4 offset-m4">
+                                        <button style="width:100%;" type="submit" class=" btn-large btn-block red waves-attach waves-light">NEXT STEP</button>
                                     </div>
                                 </div>
+
                             </form>
                         </div>
                     </div>

@@ -35,6 +35,7 @@ Route::group(['prefix' => 'install','middleware'=>'checkfile'], function () {
 });
 
 Route::group(['namespace' => 'Admin'], function () {
+
     Route::get('letmein', 'LoginController@getLogin');
     Route::get('byebye', 'LoginController@getLogout');
     Route::post('letmein', 'LoginController@postLogin');
@@ -60,6 +61,7 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::resource('role','RoleController');
         Route::resource('module','ModuleController');
         Route::resource('blogs','BlogController');
+        Route::resource('menu','MenuController');
 
     });
 

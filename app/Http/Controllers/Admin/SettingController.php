@@ -49,8 +49,6 @@ class SettingController extends Controller
 
 
             $this->data = array(
-                'pageTitle' => 'Help Manual',
-                'pageNote' => 'Documentation',
                 'stringLang' => $str,
                 'lang' => $request->input('edit'),
                 'files' => $files,
@@ -67,12 +65,8 @@ class SettingController extends Controller
             return view('admin.config.translation.' . $template, $this->data, $this->en_data);
         } else {
 
-            $this->data = array(
-                'pageTitle' => 'Help Manual',
-                'pageNote' => 'Documentation',
-            );
             $template = 'index';
-            return view('admin.config.translation.' . $template, $this->data);
+            return view('admin.config.translation.' . $template);
         }
 
 

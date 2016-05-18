@@ -18,7 +18,8 @@ class ModuleTableSeeder extends Seeder
             ['module_name' => 'role', 'module_title' => 'Role'],
             ['module_name' => 'setting', 'module_title' => 'Setting'],
             ['module_name' => 'cms', 'module_title' => 'CMS Page'],
-            ['module_name' => 'blog', 'module_title' => 'blog']
+            ['module_name' => 'blog', 'module_title' => 'Blog'],
+            ['module_name' => 'menu', 'module_title' => 'Menu']
         ]);
     }
 }

@@ -52,13 +52,13 @@ class InstallerController extends Controller
         return view('installer.user');
     }
 
-    public function userSave(Request $request,Database $database)
+    public function userSave(Request $request, Database $database)
     {
         $rule = [
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'passwoed' => 'required|confirmed',
+            'password' => 'required|confirmed',
             'password_confirmation' => 'required|same:password',
         ];
 
@@ -110,7 +110,7 @@ class InstallerController extends Controller
                     $access_data->save();
                 }
                 return Redirect::to('install/setting');
-            }else{
+            } else {
                 return view('installer.error');
             }
         }
@@ -123,20 +123,20 @@ class InstallerController extends Controller
 
     public function saveSetting(Request $request)
     {
-        if($request){
-            $settings = new SiteSettings();
-            $settings->site_name = $request->input('site_name');
-            $settings->site_metakey = $request->input('site_metakey');
-            $settings->site_metadesc = $request->input('site_metadesc');
-            $settings->company_name = $request->input('company_name');
-            $settings->company_email = $request->input('company_email');
-            $settings->address = $request->input('address');
-            $settings->phone = $request->input('phone');
-            $settings->facebook = $request->input('facebook');
-            $settings->google_plus = $request->input('google_plus');
-            $settings->twitter = $request->input('twitter');
-            $settings->save();
-        }
+
+        $settings = new SiteSettings();
+        $settings->site_name = $request->input('site_name');
+        $settings->site_metakey = $request->input('site_metakey');
+        $settings->site_metadesc = $request->input('site_metadesc');
+        $settings->company_name = $request->input('company_name');
+        $settings->company_email = $request->input('company_email');
+        $settings->address = $request->input('address');
+        $settings->phone = $request->input('phone');
+        $settings->facebook = $request->input('facebook');
+        $settings->google_plus = $request->input('google_plus');
+        $settings->twitter = $request->input('twitter');
+        $settings->save();
+
         return Redirect::to('install/finished');
     }
 
