@@ -62,6 +62,7 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::resource('module','ModuleController');
         Route::resource('blogs','BlogController');
         Route::resource('menu','MenuController');
+        Route::resource('cms','CmsController');
 
     });
 

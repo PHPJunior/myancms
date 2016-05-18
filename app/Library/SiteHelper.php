@@ -93,4 +93,16 @@ class SiteHelper
         return $message;
     }
 
+    public static function getTableList()
+    {
+        $db = env('DB_DATABASE');
+        $t = array();
+        $dbname = 'Tables_in_'.$db ;
+        foreach(DB::select("SHOW TABLES FROM {$db}") as $table)
+        {
+            $t[$table->$dbname] = $table->$dbname;
+        }
+        return $t;
+    }
+
 }

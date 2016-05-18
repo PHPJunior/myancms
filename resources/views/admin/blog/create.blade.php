@@ -52,7 +52,7 @@
                         Create New Blog
                     </h3>
                     <br>
-                    {!! Form::open(array('url'=>'blogs', 'class'=>'uk-form-stacked' ,'files' => true, 'id'=>'cv_mail_data'))  !!}
+                    {!! Form::open(array('url'=>'blogs', 'class'=>'uk-form-stacked' ,'files' => true, 'id'=>'blogs'))  !!}
 
                     <div class="uk-grid">
                         <div class="uk-width-large-1-1 ">

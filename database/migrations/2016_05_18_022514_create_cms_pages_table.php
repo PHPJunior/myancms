@@ -19,6 +19,7 @@ class CreateCmsPagesTable extends Migration
             $table->integer('status')->default(1);
             $table->string('template');
             $table->string('filename');
+            $table->string('database_table');
             $table->timestamps();
         });
     }

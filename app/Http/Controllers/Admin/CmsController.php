@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\CmsPage;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 use SiteHelper;
 
 
@@ -13,6 +16,7 @@ class CmsController extends Controller
 {
     protected $module = 'cms';
     protected $permission = array();
+    protected $data = array();
 
     public function __construct()
     {
@@ -41,7 +45,8 @@ class CmsController extends Controller
      */
     public function create()
     {
-        //
+        $this->data['tables'] = SiteHelper::getTableList();
+        return view('admin.cms.create', $this->data);
     }
 
     /**
@@ -53,6 +58,40 @@ class CmsController extends Controller
     public function store(Request $request)
     {
 
+        $rules = [
+            'title' => 'required',
+            'alias' => 'required',
+            'filename' => 'required',
+            'status' => 'required',
+            'template' => 'required'
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->passes()) {
+            $filename = base_path() ."/resources/views/pages/".$request->get('filename').".blade.php";
+
+            $content = $request->get('content');
+            $fp=fopen($filename,"w+");
+            fwrite($fp,$content);
+            fclose($fp);
+
+            $page = new CmsPage();
+            $page->title = $request->get('title');
+            $page->slug = strtolower($request->get('alias'));
+            $page->filename = strtolower($request->get('filename'));
+            $page->status = $request->get('status');
+            $page->template = $request->get('template');
+            $page->database_table = $request->get('database_table');
+            $page->save();
+
+            self::createRoute();
+
+            return Redirect::to('cms');
+        }else{
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        
     }
 
     /**
@@ -98,6 +137,23 @@ class CmsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function createRoute()
+    {
+        $rows = CmsPage::all();
+        $val  =	"<?php \n";
+        foreach($rows as $row)
+        {
+            $slug = $row->slug;
+            $val .= "Route::get('{$slug}', 'HomeController@index');\n";
+        }
+        $val .= "?>";
+        $filename = app_path().'/Http/page_routes.php';
+        $fp=fopen($filename,"w+");
+        fwrite($fp,$val);
+        fclose($fp);
+        return true;
     }
 
 }

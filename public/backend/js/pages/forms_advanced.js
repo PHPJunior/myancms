@@ -169,8 +169,11 @@ altair_form_adv = {
             }
         });
 
+        $('#database').selectize();
+
         var REGEX_EMAIL = '([a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@' +
             '(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)';
+
         $('#selec_adv_2').selectize({
             persist: false,
             maxItems: null,

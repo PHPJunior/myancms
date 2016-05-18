@@ -76,6 +76,7 @@
                 <ul>
                     <li><a href="{{ url('general_setting/clear_cache') }}">Clear Cache & Logs</a></li>
                     <li><a href="{{ url('general_setting/translation') }}">Translation</a></li>
+                    <li><a href="{{ url('general_setting/translation') }}">Edit .env</a></li>
                 </ul>
             </li>
 
