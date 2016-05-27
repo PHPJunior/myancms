@@ -6,7 +6,7 @@
  * Time: 3:57 PM
  */
 
-namespace App\Respository;
+namespace App\Repository;
 
 use App\FaceFile\BlogRepositoryInterface;
 use App\Models\Blog;
@@ -29,6 +29,14 @@ class BlogRepository implements BlogRepositoryInterface
     public function get($id)
     {
         return $this->blog->where('id', '=', $id)->with('user')->first();
+    }
+
+    /**
+     * Get All Blogs
+     */
+    public function getAllBlogs()
+    {
+        return $this->blog->with('user')->get();
     }
 
     /**

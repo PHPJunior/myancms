@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         // Commands\Inspire::class,
         Commands\MakeNewModule::class,
-        Commands\CmsInstall::class,
+        //Commands\CmsInstall::class,
     ];
 
     /**

@@ -1,6 +1,8 @@
 <!doctype html>
-<!--[if lte IE 9]> <html class="lte-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if lte IE 9]>
+<html class="lte-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html lang="en"> <!--<![endif]-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -24,17 +26,23 @@
     <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('backend/img/favicons/apple-touch-icon-60x60.png') }}">
     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('backend/img/favicons/apple-touch-icon-72x72.png') }}">
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('backend/img/favicons/apple-touch-icon-76x76.png') }}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('backend/img/favicons/apple-touch-icon-114x114.png') }}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('backend/img/favicons/apple-touch-icon-120x120.png') }}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('backend/img/favicons/apple-touch-icon-144x144.png') }}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('backend/img/favicons/apple-touch-icon-152x152.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('backend/img/favicons/apple-touch-icon-180x180.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114"
+          href="{{ asset('backend/img/favicons/apple-touch-icon-114x114.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120"
+          href="{{ asset('backend/img/favicons/apple-touch-icon-120x120.png') }}">
+    <link rel="apple-touch-icon" sizes="144x144"
+          href="{{ asset('backend/img/favicons/apple-touch-icon-144x144.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152"
+          href="{{ asset('backend/img/favicons/apple-touch-icon-152x152.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180"
+          href="{{ asset('backend/img/favicons/apple-touch-icon-180x180.png') }}">
     <!-- END Icons -->
     <!-- END Icons -->
 
 
     <!-- weather icons -->
-    <link rel="stylesheet" href="{{ asset('/backend/bower_components/weather-icons/css/weather-icons.min.css') }}" media="all">
+    <link rel="stylesheet" href="{{ asset('/backend/bower_components/weather-icons/css/weather-icons.min.css') }}"
+          media="all">
     <!-- metrics graphics (charts) -->
     <link rel="stylesheet" href="{{ asset('/backend/bower_components/metrics-graphics/dist/metricsgraphics.css') }}">
     <!-- c3.js (charts) -->
@@ -45,7 +53,8 @@
     <link rel="stylesheet" href="{{ asset('/backend/bower_components/fullcalendar/dist/fullcalendar.min.css') }}">
 
     <!-- uikit -->
-    <link rel="stylesheet" href="{{ asset('/backend/bower_components/uikit/css/uikit.almost-flat.min.css') }}" media="all">
+    <link rel="stylesheet" href="{{ asset('/backend/bower_components/uikit/css/uikit.almost-flat.min.css') }}"
+          media="all">
     <link rel="stylesheet" href="{{ asset('front/css/ionicons.css') }}">
     <!-- ionicons -->
     <link rel="stylesheet" href="{{ asset('/backend/bower_components/Ionicons/css/ionicons.min.css') }}" media="all">
@@ -62,15 +71,17 @@
 
     <!-- additional styles for plugins -->
     <!-- kendo UI -->
-    <link rel="stylesheet" href="{{ asset('/backend/bower_components/kendo-ui/styles/kendo.common-material.min.css') }}"/>
+    <link rel="stylesheet"
+          href="{{ asset('/backend/bower_components/kendo-ui/styles/kendo.common-material.min.css') }}"/>
 
     <link rel="stylesheet" href="{{ asset('/backend/bower_components/kendo-ui/styles/kendo.material.min.css') }}"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic"
+          rel="stylesheet" type="text/css"/>
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     <style>
-        body,a {
-            font-family: 'Raleway', sans-serif , Zawgyi-One , "Myanmar Text";
+        body, a {
+            font-family: 'Raleway', sans-serif, Zawgyi-One, "Myanmar Text";
         }
     </style>
 </head>
@@ -97,7 +108,7 @@
             ]
         }
     };
-    (function() {
+    (function () {
         var wf = document.createElement('script');
         wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
                 '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
@@ -132,19 +143,31 @@
 <script src="{{ asset('backend/bower_components/jquery-ui/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('backend/bower_components/jtable/lib/jquery.jtable.min.js') }}"></script>
 <script src="{{ asset('backend/bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js') }}"></script>
+
+<script>
+    // load parsley config (altair_admin_common.js)
+    altair_forms.parsley_validation_config();
+    // load extra validators
+    altair_forms.parsley_extra_validators();
+
+</script>
+
+<script src="{{ asset('backend/bower_components/parsleyjs/dist/parsley.js') }}"></script>
 <script src="{{ asset('backend/js/pages/forms_advanced.js') }}"></script>
 <script src="{{ asset('backend/js/uikit_htmleditor_custom.js') }}"></script>
 <script src="{{ asset('backend/bower_components/ion.rangeslider/js/ion.rangeSlider.min.js') }}"></script>
 <script src="{{ asset('backend/js/pages/components_nestable.js') }}"></script>
+<script src="{{ asset('backend/js/pages/forms_wizard.min.js') }}"></script>
+<script src="{{ asset('backend/js/custom/wizard_steps.min.js') }}"></script>
 <script src="{{ asset('backend/js/kendoui_custom.min.js') }}"></script>
 <script src="{{ asset('backend/js/pages/kendoui.js') }}"></script>
 
 <script>
-    $(function() {
+    $(function () {
         // enable hires images
         altair_helpers.retina_images();
         // fastClick (touch devices)
-        if(Modernizr.touch) {
+        if (Modernizr.touch) {
             FastClick.attach(document.body);
         }
     });
@@ -189,25 +212,22 @@
             </li>
         </ul>
     </div>
-    <div class="uk-visible-large uk-margin-medium-bottom">
-        <h4 class="heading_c">Sidebar</h4>
-        <p>
-            <input type="checkbox" name="style_sidebar_mini" id="style_sidebar_mini" data-md-icheck />
-            <label for="style_sidebar_mini" class="inline-label">Mini Sidebar</label>
-        </p>
-    </div>
     <div class="uk-visible-large">
-        <h4 class="heading_c">Layout</h4>
-        <p>
-            <input type="checkbox" name="style_layout_boxed" id="style_layout_boxed" data-md-icheck />
-            <label for="style_layout_boxed" class="inline-label">Boxed layout</label>
-        </p>
+        <h4 class="heading_c">Change Language</h4>
+        @foreach(SiteHelper::langOption() as $lang)
+            <p>
+                <a href="{{ URL::to('/lang/'.$lang['folder'])}}" style="background-color: transparent;color: #000;  text-decoration: none;">
+                    <i class="item-icon @if($lang['folder'] == 'mm' || $lang['folder'] == 'uni' )flag-MM @else flag-GB @endif"></i>
+                    <label for="#" class="inline-label">{{  $lang['name'] }}</label>
+                </a>
+            </p>
+        @endforeach
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sugar/1.4.1/sugar.min.js"></script>
 <script src="{{ asset('backend/js/jquerymy-1.2.4.min.js') }}"></script>
 <script>
-    $(function() {
+    $(function () {
         var $switcher = $('#style_switcher'),
                 $switcher_toggle = $('#style_switcher_toggle'),
                 $theme_switcher = $('#theme_switcher'),
@@ -216,12 +236,12 @@
                 $body = $('body');
 
 
-        $switcher_toggle.click(function(e) {
+        $switcher_toggle.click(function (e) {
             e.preventDefault();
             $switcher.toggleClass('switcher_active');
         });
 
-        $theme_switcher.children('li').click(function(e) {
+        $theme_switcher.children('li').click(function (e) {
             e.preventDefault();
             var $this = $(this),
                     this_theme = $this.attr('data-app-theme');
@@ -232,7 +252,7 @@
                     .removeClass('app_theme_a app_theme_b app_theme_c app_theme_d app_theme_e app_theme_f app_theme_g')
                     .addClass(this_theme);
 
-            if(this_theme == '') {
+            if (this_theme == '') {
                 localStorage.removeItem('altair_theme');
             } else {
                 localStorage.setItem("altair_theme", this_theme);
@@ -241,8 +261,8 @@
         });
 
         // hide style switcher
-        $document.on('click keyup', function(e) {
-            if( $switcher.hasClass('switcher_active') ) {
+        $document.on('click keyup', function (e) {
+            if ($switcher.hasClass('switcher_active')) {
                 if (
                         ( !$(e.target).closest($switcher).length )
                         || ( e.keyCode == 27 )
@@ -253,25 +273,25 @@
         });
 
         // get theme from local storage
-        if(localStorage.getItem("altair_theme") !== null) {
-            $theme_switcher.children('li[data-app-theme='+localStorage.getItem("altair_theme")+']').click();
+        if (localStorage.getItem("altair_theme") !== null) {
+            $theme_switcher.children('li[data-app-theme=' + localStorage.getItem("altair_theme") + ']').click();
         }
 
 
         // toggle mini sidebar
 
         // change input's state to checked if mini sidebar is active
-        if((localStorage.getItem("altair_sidebar_mini") !== null && localStorage.getItem("altair_sidebar_mini") == '1') || $body.hasClass('sidebar_mini')) {
+        if ((localStorage.getItem("altair_sidebar_mini") !== null && localStorage.getItem("altair_sidebar_mini") == '1') || $body.hasClass('sidebar_mini')) {
             $mini_sidebar_toggle.iCheck('check');
         }
 
         $mini_sidebar_toggle
-                .on('ifChecked', function(event){
+                .on('ifChecked', function (event) {
                     $switcher.removeClass('switcher_active');
                     localStorage.setItem("altair_sidebar_mini", '1');
                     location.reload(true);
                 })
-                .on('ifUnchecked', function(event){
+                .on('ifUnchecked', function (event) {
                     $switcher.removeClass('switcher_active');
                     localStorage.removeItem('altair_sidebar_mini');
                     location.reload(true);
@@ -281,7 +301,7 @@
         // toggle boxed layout
 
         // change input's state to checked if mini sidebar is active
-        if((localStorage.getItem("altair_layout") !== null && localStorage.getItem("altair_layout") == 'boxed') || $body.hasClass('boxed_layout')) {
+        if ((localStorage.getItem("altair_layout") !== null && localStorage.getItem("altair_layout") == 'boxed') || $body.hasClass('boxed_layout')) {
             $boxed_layout_toggle.iCheck('check');
             $body.addClass('boxed_layout');
             $(window).resize();
@@ -289,12 +309,12 @@
 
         // toggle mini sidebar
         $boxed_layout_toggle
-                .on('ifChecked', function(event){
+                .on('ifChecked', function (event) {
                     $switcher.removeClass('switcher_active');
                     localStorage.setItem("altair_layout", 'boxed');
                     location.reload(true);
                 })
-                .on('ifUnchecked', function(event){
+                .on('ifUnchecked', function (event) {
                     $switcher.removeClass('switcher_active');
                     localStorage.removeItem('altair_layout');
                     location.reload(true);

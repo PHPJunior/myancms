@@ -7,11 +7,14 @@
                     <div class="md-card">
                         <div class="md-card-toolbar">
                             <div class="md-card-toolbar-actions">
-                                <a href="{{ URL::to('general_setting/translation?edit=en')}}" class="md-btn md-btn-small md-btn-flat md-btn-flat-danger"
-                                   >Edit English</a>
-                                <a href="{{ URL::to('general_setting/translation?edit=mm')}}" class="md-btn md-btn-small md-btn-flat md-btn-flat-primary"
+                                <a href="{{ URL::to('general_setting/translation?edit=en')}}"
+                                   class="md-btn md-btn-small md-btn-flat md-btn-flat-danger"
+                                >Edit English</a>
+                                <a href="{{ URL::to('general_setting/translation?edit=mm')}}"
+                                   class="md-btn md-btn-small md-btn-flat md-btn-flat-primary"
                                 >Edit Myanmar</a>
-                                <a href="{{ URL::to('general_setting/translation?edit=uni')}}" class="md-btn md-btn-small md-btn-flat md-btn-flat-warning"
+                                <a href="{{ URL::to('general_setting/translation?edit=uni')}}"
+                                   class="md-btn md-btn-small md-btn-flat md-btn-flat-warning"
                                 >Edit Myanmar( Unicode )</a>
                             </div>
                             <h3 class="md-card-toolbar-heading-text">
@@ -23,9 +26,9 @@
                             <ul class="uk-tab uk-tab-grid">
                                 <?php $i = 1 ?>
                                 @foreach($files as $f)
-                                    @if($f != "." and $f != ".." and $f != 'info.json' and $f != 'validation.php' and $f != 'messages.php')
-                                        <li @if($file == $f) aria-expanded="true" class="uk-width-1-4 uk-active"
-                                            @else aria-expanded="false" class="uk-width-1-4" @endif >
+                                    @if($f != "." and $f != ".." and $f != 'info.json' and $f != 'validation.php')
+                                        <li @if($file == $f) aria-expanded="true" class="uk-width-1-5 uk-active"
+                                            @else aria-expanded="false" class="uk-width-1-5" @endif >
                                             <a href="{{ URL::to('general_setting/translation?edit='.$lang.'&file='.$f)}}">{{ $f }} </a>
                                         </li>
                                     @endif
@@ -60,11 +63,10 @@
                                             <div class="uk-grid" data-uk-grid-margin="">
                                                 <div class="uk-width-medium-1-1">
                                                     <div class="parsley-row">
-                                                        <div class="md-input-wrapper"><input type="text"
-                                                                                             name="{{ $key }}"
-                                                                                             value="{{ $val }}"
-                                                                                             class="md-input"/><span
-                                                                    class="md-input-bar"></span></div>
+                                                        <div class="md-input-wrapper">
+                                                            <textarea name="{{ $key }}" class="md-input autosize_init" cols="30" rows="3"
+                                                                      style="overflow-x: hidden; word-wrap: break-word;">{{ $val }}</textarea>
+                                                            <span class="md-input-bar"></span></div>
 
                                                     </div>
                                                 </div>
@@ -74,11 +76,11 @@
                                                 <div class="uk-grid" data-uk-grid-margin="">
                                                     <div class="uk-width-medium-4-5">
                                                         <div class="parsley-row">
-                                                            <div class="md-input-wrapper"><input type="text"
-                                                                                                 name="{{ $key .'-'.$k }}"
-                                                                                                 value="{{ $v }}"
-                                                                                                 class="md-input"/><span
-                                                                        class="md-input-bar"></span></div>
+                                                            <div class="md-input-wrapper">
+                                                                <textarea name="{{ $key .'-'.$k }}"
+                                                                          class="md-input autosize_init" cols="30" rows="3"
+                                                                          style="overflow-x: hidden; word-wrap: break-word;">{{  $v }}</textarea>
+                                                                <span class="md-input-bar"></span></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -92,9 +94,10 @@
 
                                             <div class="uk-width-medium-1-1">
                                                 <div class="parsley-row">
-                                                    <div class="md-input-wrapper"><input type="text"
-                                                                                         value="{{ $en_val }}" readonly
-                                                                                         class="md-input"/></div>
+                                                    <div class="md-input-wrapper">
+                                                         <textarea readonly class="md-input autosize_init" cols="30" rows="3"
+                                                                   style="overflow-x: hidden; word-wrap: break-word;">{{ $en_val }}</textarea>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

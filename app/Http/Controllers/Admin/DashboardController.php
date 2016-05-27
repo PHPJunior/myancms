@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
     /**
+     * DashboardController constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -25,7 +33,10 @@ class DashboardController extends Controller
         return view('admin.dashboard.index', compact('count'));
     }
 
-
+    public function documentation()
+    {
+        return view('admin.dashboard.documentation', compact('count'));
+    }
 
     /**
      * Show the form for creating a new resource.

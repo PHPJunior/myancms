@@ -21,7 +21,7 @@ class CreateMenuTable extends Migration
             $table->string('menu_icon')->nullable();
             $table->string('menu_type');
             $table->string('slug');
-            $table->string('active')->default(1);
+            $table->integer('active')->default(1);
             $table->timestamps();
         });
     }

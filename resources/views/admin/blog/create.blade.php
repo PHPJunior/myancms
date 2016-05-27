@@ -65,9 +65,11 @@
 
                             <div class="uk-grid" data-uk-grid-margin>
                                 <div class="uk-width-large-1-1 parsley-row">
-                                    <select id="tags" name="tags[]" multiple>
-                                        <option value="2" selected>Venus</option>
-                                        <option value="3" selected>Earth</option>
+                                    <select name="tags[]" id="tags">
+                                        <option value="">Enter Tag</option>
+                                        @foreach($tags as $tag)
+                                            <option value="{{ $tag->name }}">{{ $tag->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

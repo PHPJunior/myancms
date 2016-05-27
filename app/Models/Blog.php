@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\User;
 use Cartalyst\Tags\TaggableInterface;
 use Cartalyst\Tags\TaggableTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Blog extends Model implements TaggableInterface
 {
@@ -14,6 +16,13 @@ class Blog extends Model implements TaggableInterface
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\user');
+    }
+
+    public static function TagsList()
+    {
+        return DB::table('tags')
+                    ->select('name')
+                    ->get();
     }
 }

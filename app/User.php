@@ -2,18 +2,19 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class User extends Authenticatable
+class User extends Model
 {
+    protected $table = 'users';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name','last_name', 'email', 'password',
     ];
 
     /**
@@ -22,8 +23,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
     ];
+
+    public function blogs()
+    {
+        return $this->hasMany('App\Models\Blog','user_id');
+    }
 
     public static function get_all_admin_list()
     {

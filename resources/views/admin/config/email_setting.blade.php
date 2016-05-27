@@ -39,7 +39,7 @@
                             <div class="uk-width-medium-1-2">
                                 <div class="uk-form-row">
                                     <label>SMTP Host Address</label>
-                                    <input type="text" name="SMTPHostAddress" class="md-input" value="{{\App\Models\EmailSetting::where('id','1')->value('SMTPHostAddress') }}"/>
+                                    <input type="text" name="SMTPHostAddress" class="md-input" value="{{SMTPHostAddress }}"/>
                                 </div>
                             </div>
                             <div class="uk-width-medium-1-2">
@@ -73,6 +73,13 @@
                                 <div class="uk-form-row">
                                     <label>SMTP Server Password ( Leave empty if you do not want to change it )</label>
                                     <input type="password" name="SMTPServerPassword" class="md-input"/>
+                                </div>
+                            </div>
+
+                            <div class="uk-width-medium-1-2">
+                                <div class="uk-form-row">
+                                    <label>Mail Driver</label>
+                                    <input type="text" name="MailDriver" value="{{ MailDriver }}" class="md-input"/>
                                 </div>
                             </div>
                         </div>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Blog;
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -21,6 +21,7 @@ class BlogController extends Controller
 
     public function __construct()
     {
+        parent::__construct();
         $this->info = SiteHelper::moduleInfo($this->module);
         $this->access = SiteHelper::checkPermission($this->info->id);
     }
@@ -36,7 +37,7 @@ class BlogController extends Controller
             return view('admin.errors.403');
 
         $this->permission['permission'] = $this->access;
-        return view('admin.');
+        return view('admin.blog.index');
 
     }
 
@@ -47,7 +48,11 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('admin.blog.create');
+        if ($this->access['create'] != '1')
+            return view('admin.errors.403');
+
+        $tags = Blog::TagsList();
+        return view('admin.blog.create')->with('tags',$tags);
     }
 
     /**
@@ -112,7 +117,8 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        //
+        if ($this->access['update'] != '1')
+            return view('admin.errors.403');
     }
 
     /**
@@ -135,7 +141,9 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ($this->access['delete'] != '1')
+            return view('admin.errors.403');
+
     }
 
 }

@@ -16,11 +16,17 @@ use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getLogin()
     {
-        return view('admin.login.login');
+        return Sentinel::check() ? Redirect::intended('dashboard') : view('admin.login.login');
     }
 
+    /**
+     * @return $this
+     */
     public function postLogin()
     {
         try

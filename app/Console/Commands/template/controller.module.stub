@@ -15,6 +15,7 @@ class DummyClass extends Controller
 
         public function __construct()
         {
+            parent::__construct();
             $this->info = SiteHelper::moduleInfo($this->module);
             $this->access = SiteHelper::checkPermission($this->info->id);
         }
@@ -30,7 +31,7 @@ class DummyClass extends Controller
                 return view('admin.errors.403');
 
             $this->permission['permission'] = $this->access;
-
+            return view('admin.DummyFolder.index');
         }
 
         /**
@@ -40,7 +41,9 @@ class DummyClass extends Controller
              */
             public function create()
             {
-                //
+
+                return view('admin.DummyFolder.create');
+
             }
 
             /**
@@ -51,7 +54,9 @@ class DummyClass extends Controller
              */
             public function store(Request $request)
             {
-                //
+                if ($this->access['create'] != '1')
+                   return view('admin.errors.403');
+
             }
 
             /**
@@ -62,7 +67,7 @@ class DummyClass extends Controller
              */
             public function show($id)
             {
-                //
+                return view('admin.DummyFolder.view');
             }
 
             /**
@@ -73,7 +78,7 @@ class DummyClass extends Controller
              */
             public function edit($id)
             {
-                //
+                return view('admin.DummyFolder.update');
             }
 
             /**
@@ -85,7 +90,9 @@ class DummyClass extends Controller
              */
             public function update(Request $request, $id)
             {
-                //
+                if ($this->access['update'] != '1')
+                    return view('admin.errors.403');
+
             }
 
             /**
@@ -96,7 +103,9 @@ class DummyClass extends Controller
              */
             public function destroy($id)
             {
-                //
+                if ($this->access['delete'] != '1')
+                   return view('admin.errors.403');
+
             }
 
 }

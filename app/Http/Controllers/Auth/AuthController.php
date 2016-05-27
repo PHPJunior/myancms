@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use Validator;
+use App\Member;
+use App\Models\SiteSettings;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -33,11 +36,13 @@ class AuthController extends Controller
     /**
      * Create a new authentication controller instance.
      *
-     * @return void
+     * @param SiteSettings $siteSettings
      */
-    public function __construct()
+    public function __construct(SiteSettings $siteSettings)
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        parent::__construct();
+        $this->siteSettings = $siteSettings;
     }
 
     /**
@@ -50,7 +55,7 @@ class AuthController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'email' => 'required|email|max:255|unique:members',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -63,11 +68,24 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        return Member::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    public function showLoginForm()
+    {
+        $theme = $this->siteSettings->find(1);
+        return  view('theme.'.$theme->theme.'.user.signin',compact('theme'));
+    }
+
+    public function showRegistrationForm()
+    {
+        $theme = $this->siteSettings->find(1);
+        return view('theme.'.$theme->theme.'.user.register',compact('theme'));
+    }
+
 
 }

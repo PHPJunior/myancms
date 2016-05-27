@@ -22,6 +22,7 @@ class RoleController extends Controller
      */
     public function __construct()
     {
+        parent::__construct();
         $this->roles = Sentinel::getRoleRepository()->createModel();
         $this->info =  SiteHelper::moduleInfo($this->module);
         $this->access = SiteHelper::checkPermission($this->info->id);

@@ -1,7 +1,6 @@
 <?php
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -34,6 +33,25 @@ class SiteHelper
                 $fp = file_get_contents($path . $value . '/info.json');
                 $fp = json_decode($fp, true);
                 $t[] = $fp;
+            }
+
+        }
+        return $t;
+    }
+
+    public static function themeOption()
+    {
+
+        $path = base_path().'/resources/views/theme/';
+        $lang = scandir($path);
+        $t = array();
+        foreach($lang as $value) {
+            if($value === '.' || $value === '..') {continue;}
+            if(is_dir($path . $value))
+            {
+                $fp = file_get_contents($path .$value.'/info.json');
+                $fp = json_decode($fp,true);
+                $t[] =  $fp ;
             }
 
         }

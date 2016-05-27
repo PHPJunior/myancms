@@ -8,90 +8,40 @@
             <a href="{{ url(' ') }}" class="sSidebar_show"><img src="{{ url('backend/img/logo_main_small.png') }}"
                                                                 alt="" height="32" width="32"/></a>
         </div>
-        {{--<div class="sidebar_actions">--}}
-        {{--<select id="lang_switcher" name="lang_switcher">--}}
-        {{--<option value="gb" selected>English</option>--}}
-        {{--</select>--}}
-        {{--</div>--}}
     </div>
 
     <div class="menu_section">
+        <?php $menus = \App\Models\Menu::getMenu('backend'); ?>
         <ul>
-            <li title="Dashboard">
-                <a href="{{ url('dashboard') }}">
-                    <span class="menu_icon"><i class="material-icons">&#xE871;</i></span>
-                    <span class="menu_title">Dashboard</span>
-                </a>
-            </li>
+            @foreach($menus as $menu)
+                <?php
+                $childs = \App\Models\Menu::getChild($menu->id);
+                if (Session::get('lang')):
+                    $folder = Session::get('lang');
+                    $lang = SiteHelper::langOption();
+                    $menu_lang = json_decode($menu->menu_lang);
+                    $name = $menu_lang->title->$folder;
+                else:
+                    $name = $menu->menu_name;
+                endif;
+                ?>
 
-
-            <li title="Module Management">
-                <a href="{{ url('module') }}">
-                    <span class="menu_icon"><i class="material-icons">view_module</i></span>
-                    <span class="menu_title">Module Management</span>
-                </a>
-            </li>
-
-            <li title="CMS Page">
-                <a href="{{ url('cms') }}">
-                    <span class="menu_icon"><i class="material-icons">pages</i></span>
-                    <span class="menu_title">CMS Page</span>
-                </a>
-            </li>
-
-            <li title="Menu Management">
-                <a href="{{ url('menu') }}">
-                    <span class="menu_icon"><i class="material-icons">toc</i></span>
-                    <span class="menu_title">Menu Management</span>
-                </a>
-            </li>
-
-            <li title="Blog List">
-                <a href="#">
-                    <span class="menu_icon"><i class="material-icons">line_style</i></span>
-                    <span class="menu_title">Blog Management</span>
-                </a>
-                <ul>
-                    <li><a href="{{ url('blogs') }}">Blog List</a></li>
-                    <li><a href="{{ url('blogs/create') }}">Add New Blog</a></li>
-                </ul>
-            </li>
-
-            <li title="Email Setting">
-                <a href="#">
-                    <span class="menu_icon"><i class="material-icons">mail_outline</i></span>
-                    <span class="menu_title">Email Setting</span>
-                </a>
-                <ul>
-                    <li><a href="{{ url('general_setting/email_setting') }}">Mail Server</a></li>
-                    <li><a href="{{ url('email_template') }}">Email Tamplates</a></li>
-                </ul>
-            </li>
-
-            <li title="Site Setting">
-                <a href="#">
-                    <span class="menu_icon"><i class="material-icons">settings_applications</i></span>
-                    <span class="menu_title">Site Setting</span>
-                </a>
-                <ul>
-                    <li><a href="{{ url('general_setting/clear_cache') }}">Clear Cache & Logs</a></li>
-                    <li><a href="{{ url('general_setting/translation') }}">Translation</a></li>
-                    <li><a href="{{ url('general_setting/translation') }}">Edit .env</a></li>
-                </ul>
-            </li>
-
-
-            <li title="Admin Settings">
-                <a href="#">
-                    <span class="menu_icon"><i class="material-icons">&#xE87C;</i></span>
-                    <span class="menu_title">Admin Settings</span>
-                </a>
-                <ul>
-                    <li><a href="{{ url('admin') }}">Admin List</a></li>
-                    <li><a href="{{ url('role') }}">Role List</a></li>
-                </ul>
-            </li>
-
+                <li title="{{ $name }}">
+                    <a @if(count($childs) > 0) href="#" @else href="{{ url($menu->slug) }}" @endif>
+                        <span class="menu_icon"><i class="material-icons">{{ $menu->menu_icon }}</i></span>
+                            <span class="menu_title">
+                                {{ $name }}
+                            </span>
+                    </a>
+                    @if(count($childs) > 0)
+                        <ul>
+                            @foreach($childs as $child)
+                                <li><a href="{{ url($child->slug) }}">{{ $child->menu_name }}</a></li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </li>
+            @endforeach
         </ul>
     </div>
 </aside>

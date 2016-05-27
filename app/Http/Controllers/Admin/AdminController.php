@@ -27,8 +27,12 @@ class AdminController extends Controller
      */
     public function __construct()
     {
+        parent::__construct();
         $this->roles = Sentinel::getRoleRepository()->createModel();
+
+        //Check Module Info
         $this->info = SiteHelper::moduleInfo($this->module);
+        //Check User Permission
         $this->access = SiteHelper::checkPermission($this->info->id);
     }
 

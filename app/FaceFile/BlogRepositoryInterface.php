@@ -25,4 +25,7 @@ interface BlogRepositoryInterface
      */
     public function getLatestBlogs($paginate = null);
 
+
+    public function getAllBlogs();
+
 }

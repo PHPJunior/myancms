@@ -2,52 +2,71 @@
 @section('content')
     <div id="page_content">
         <div id="page_content_inner">
-            <div class="uk-grid uk-grid-width-medium-1-1" data-uk-grid-margin="">
-                <div>
-                    <div class="md-card">
-                        <div class="md-card-toolbar">
-                            <div class="md-card-toolbar-actions">
-                                <a href="#" class="md-btn md-btn-small md-btn-flat md-btn-flat-primary"
-                                   data-uk-modal="{target:'#add_new_language'}"><i class="material-icons">add_circle_outline</i>&nbsp;&nbsp;
-                                    Add New Translation </a>
-                            </div>
-                            <h3 class="md-card-toolbar-heading-text">
-                                Translation
-                                <small> Manage Language Translation</small>
-                            </h3>
-                        </div>
-                        <div class="md-card-content">
-                            <div class="uk-overflow-container">
+            <h3 class="heading_a uk-margin-bottom">
+                Translation
+                <small> Manage Language Translation</small>
+                <a href="#" class="md-btn"
+                   data-uk-modal="{target:'#add_new_language'}" style="float: right">Add New Translation </a>
+            </h3>
 
-                                <table class="uk-table" style="width: 60%">
-                                    <thead>
+            <div class="md-card">
+                <div class="md-card-content">
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-large-1-2">
+                            <table class="uk-table">
+                                <thead>
+                                <tr>
+                                    <th> Name</th>
+                                    <th width="43%"> Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                @foreach(SiteHelper::langOption() as $lang)
                                     <tr>
-                                        <th> Name</th>
-                                        <th> Action</th>
+                                        <td>  {{  $lang['name'] }}   </td>
+                                        <td>
+
+                                            <a href="{{ URL::to('general_setting/translation?edit='.$lang['folder'])}} "
+                                               class="md-btn md-btn-small md-btn-primary"> Manage </a>
+                                            @if($lang['folder'] !='en')
+                                                <a href="{{ URL::to('general_setting/removetranslation/'.$lang['folder'])}} "
+                                                   class="md-btn md-btn-small md-btn-danger"> Delete </a>
+                                            @endif
+
+                                        </td>
                                     </tr>
-                                    </thead>
-                                    <tbody>
+                                @endforeach
 
-                                    @foreach(SiteHelper::langOption() as $lang)
-                                        <tr>
-                                            <td>  {{  $lang['name'] }}   </td>
-                                            <td>
-
-                                                <a href="{{ URL::to('general_setting/translation?edit='.$lang['folder'])}} "
-                                                   class="md-btn md-btn-small md-btn-primary"> Manage </a>
-                                                @if($lang['folder'] !='en')
-                                                    <a href="{{ URL::to('general_setting/removetranslation/'.$lang['folder'])}} "
-                                                       class="md-btn md-btn-small md-btn-danger"> Delete </a>
-                                                @endif
-
-                                            </td>
-                                        </tr>
-                                    @endforeach
-
-                                    </tbody>
-                                </table>
-
-                            </div>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="uk-width-large-1-2">
+                            <p>{{ trans('admin.tran_para_1' )}}</p>
+                            <p>{{ trans('admin.tran_para_2')}}</p>
+                            <pre class="line-numbers"><code class="language-php">
+/resources
+    /lang
+        /en
+            messages.php
+        /es
+            messages.php
+                                </code></pre>
+                            <p>{{ trans('admin.tran_para_3' )}}</p>
+                            <pre class="line-numbers"><code class="language-php">
+ return [
+         'welcome' => 'Welcome to our application'
+ ];
+                                </code></pre>
+                            <h3># {{ trans('admin.basic_usage_title' )}}</h3>
+                            <p>{{ trans('admin.tran_para_4' )}}</p>
+                            <pre class="line-numbers"><code class="language-php">
+ echo trans('messages.welcome');
+                                </code></pre>
+                            <p>{{ trans('admin.tran_para_5' )}}</p>
+                            <pre class="line-numbers"><code class="language-php">
+ <span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token function">trans<span class="token punctuation">(</span></span><span class="token string">'messages.welcome'</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+                                </code></pre>
                         </div>
                     </div>
                 </div>

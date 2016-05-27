@@ -130,16 +130,6 @@ altair_form_adv = {
                     label     : ''
                 }
             },
-            options: [
-                {id: 1, title: 'Mercury'},
-                {id: 2, title: 'Venus' },
-                {id: 3, title: 'Earth' },
-                {id: 4, title: 'Mars' },
-                {id: 5, title: 'Jupiter'},
-                {id: 6, title: 'Saturn' },
-                {id: 7, title: 'Uranus' },
-                {id: 8, title: 'Neptune'}
-            ],
             maxItems: null,
             valueField: 'title',
             labelField: 'title',
@@ -166,6 +156,19 @@ altair_form_adv = {
                         duration: 200,
                         easing: easing_swiftOut
                     })
+            },
+            load: function(query, callback) {
+                if (!query.length) return callback();
+                $.ajax({
+                    url: 'https://api.github.com/legacy/repos/search/' + encodeURIComponent(query),
+                    type: 'GET',
+                    error: function() {
+                        callback();
+                    },
+                    success: function(res) {
+                        callback(res.repositories.slice(0, 10));
+                    }
+                });
             }
         });
 

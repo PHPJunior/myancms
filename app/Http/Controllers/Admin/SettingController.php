@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\EmailSetting;
+use App\Models\SiteSettings;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -24,9 +25,19 @@ class SettingController extends Controller
      */
     public function __construct()
     {
+        parent::__construct();
         $this->info = SiteHelper::moduleInfo($this->module);
         $this->access = SiteHelper::checkPermission($this->info->id);
 
+    }
+
+    public function site_setting()
+    {
+        if ($this->access['view'] != '1')
+            return view('admin.errors.403');
+
+        $setting = SiteSettings::find(1);
+        return view('admin.config.site_setting',compact('setting'));
     }
 
 
@@ -183,67 +194,23 @@ class SettingController extends Controller
 
     }
 
-    public function email_setting()
+    public function save_site_setting(Request $request)
     {
-        return view('admin.config.email_setting');
+        $settings = SiteSettings::find(1);
+        $settings->site_name = $request->input('site_name');
+        $settings->site_metakey = $request->input('site_metakey');
+        $settings->site_metadesc = $request->input('site_metadesc');
+        $settings->company_name = $request->input('company_name');
+        $settings->company_email = $request->input('company_email');
+        $settings->address = $request->input('address');
+        $settings->phone = $request->input('phone');
+        $settings->theme = $request->input('theme');
+        $settings->facebook = $request->input('facebook');
+        $settings->google_plus = $request->input('google');
+        $settings->twitter = $request->input('twitter');
+        $settings->save();
+
+        return Redirect::back();
     }
 
-    public function email_server_data(Request $request)
-    {
-        $input = Input::all();
-
-        $validator = Validator::make(
-            array(
-                'emailFromName' => $input['emailFromName'],
-                'emailFromEmail' => $input['emailFromEmail'],
-                'SMTPHostAddress' => $input['SMTPHostAddress'],
-                'SMTPHostPort' => $input['SMTPHostPort'],
-                'EMailEncryptionProtocol' => $input['EMailEncryptionProtocol'],
-                'SMTPServerUsername' => $input['SMTPServerUsername'],
-                'SMTPServerPassword' => $input['SMTPServerPassword']
-            ),
-
-            array(
-                'emailFromName' => 'required',
-                'emailFromEmail' => 'required',
-                'SMTPHostPort' => 'numeric',
-
-            )
-        );
-
-        if ($validator->fails()) {
-
-            return Redirect::back()
-                ->withInput()
-                ->WithErrors($validator);
-
-        } else {
-
-            $val = "<?php \n";
-            $val .= "define('emailFromName','" . $request->input('emailFromName') . "');\n";
-            $val .= "define('emailFromEmail','" . $request->input('emailFromEmail') . "');\n";
-            $val .= "define('SMTPHostAddress','" . $request->input('SMTPHostAddress') . "');\n";
-            $val .= "define('SMTPHostPort','" . $request->input('SMTPHostPort') . "');\n";
-            $val .= "define('EMailEncryptionProtocol','" . $request->input('EMailEncryptionProtocol') . "');\n";
-            $val .= "define('SMTPServerUsername','" . $request->input('SMTPServerUsername') . "');\n";
-
-            if($request->input('SMTPServerPassword') != '' || $request->input('SMTPServerPassword') != null ){
-                $val .= "define('SMTPServerPassword','" . $request->input('SMTPServerPassword') . "');\n";
-            }else{
-                $val .= "define('SMTPServerPassword','" . $request->input('SMTPServerPassword02') . "');\n";
-            }
-
-            $val .= "?>";
-
-            $filename = base_path() . '/resources/views/admin/config/setting_file/mailsetting.php';
-            $fp = fopen($filename, "w+");
-            fwrite($fp, $val);
-            fclose($fp);
-
-            Session::flash('Message', 'Mail Server Successfully Updated.');
-
-            return Redirect::back();
-
-        }
-    }
 }

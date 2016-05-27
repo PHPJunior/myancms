@@ -24,6 +24,13 @@ class MakeNewModule extends Command
 
     protected $files;
 
+    protected $views = [
+        'index.stub'    => 'index.blade.php',
+        'create.stub'   => 'create.blade.php',
+        'update.stub'   => 'update.blade.php',
+        'view.stub'     => 'view.blade.php',
+    ];
+
     public function __construct(Filesystem $files)
     {
         parent::__construct();
@@ -38,7 +45,11 @@ class MakeNewModule extends Command
 
         $title = $this->ask('Enter Module Title?');
 
-        $model_name = $this->ask('Enter Model Class Name?');
+        $model_name = $this->ask('Enter class name to create a new Eloquent model class?');
+
+        $folder = $this->ask('Enter Folder Name For Created Module');
+
+        $route = $this->ask('Enter Route Parameter');
 
         $module_name = $dummy . 'Controller';
 
@@ -46,15 +57,27 @@ class MakeNewModule extends Command
 
         $path = $this->getPath($name);
 
+        $folderpath = base_path('resources/views/admin/'.$folder);
+
         if ($this->alreadyExists($module_name)) {
             $this->error($this->type . ' already exists!');
-
             return false;
         }
 
-        $this->makeDirectory($path);
+        $content = "Route::resource('$route','$module_name');";
 
-        $this->files->put($path, $this->buildClass($name, $dummy));
+        $this->makeDirectory($path,$folder);
+        $this->exportViews($folderpath);
+
+        $this->info('Updated Routes File( module_routes.php ).');
+
+        file_put_contents(
+            app_path('Http/module_routes.php'),
+            $content,
+            FILE_APPEND
+        );
+
+        $this->files->put($path, $this->buildClass($name, $dummy, $folder));
 
         $module = new Module();
         $module->module_name = strtolower($dummy);
@@ -70,21 +93,19 @@ class MakeNewModule extends Command
             ];
 
             $user_list = User::all();
-            $bar = $this->output->createProgressBar(count($user_list));
+
             foreach ($user_list as $user) {
                 $access_data = new UserAccess();
                 $access_data->access_data = json_encode($data);
                 $access_data->user_id = $user->id;
                 $access_data->module_id = $module->id;
                 $access_data->save();
-                $bar->advance();
             }
-            $bar->finish();
         }
 
         if($model_name != null || $model_name != ' '){
             $this->call('make:model',[
-               'name' => $model_name,
+               'name' => $model_name, '--migration' => true
             ]);
         }
 
@@ -136,24 +157,39 @@ class MakeNewModule extends Command
         return $rootNamespace . '\Http\Controllers\Admin';
     }
 
-    protected function makeDirectory($path)
+    protected function makeDirectory($path,$folder)
     {
         if (!$this->files->isDirectory(dirname($path))) {
             $this->files->makeDirectory(dirname($path), 0777, true, true);
         }
+
+        if (! is_dir(base_path('resources/views/admin/'.$folder))) {
+            mkdir(base_path('resources/views/admin/'.$folder), 0755, true);
+        }
     }
 
-    protected function buildClass($name, $dummy)
+    protected function exportViews($folderpath)
+    {
+        foreach ($this->views as $key => $value) {
+            $path = $folderpath.'/'.$value;
+
+            $this->line('<info>Created View:</info> '.$path);
+
+            copy( __DIR__ . '/template/blade/'.$key,$path);
+        }
+    }
+
+    protected function buildClass($name, $dummy, $folder)
     {
         $stub = $this->files->get($this->getStub());
 
         $module = $dummy;
 
-        return $this->replaceNamespace($stub, $name, $module)->replaceClass($stub, $name);
+        return $this->replaceNamespace($stub, $name, $module, $folder)->replaceClass($stub, $name);
     }
 
 
-    protected function replaceNamespace(&$stub, $name, $module)
+    protected function replaceNamespace(&$stub, $name, $module, $folder)
     {
 
         $stub = str_replace(
@@ -162,6 +198,10 @@ class MakeNewModule extends Command
 
         $stub = str_replace(
             'DummyModule', strtolower($module), $stub
+        );
+
+        $stub = str_replace(
+            'DummyFolder', strtolower($folder), $stub
         );
 
         $stub = str_replace(
