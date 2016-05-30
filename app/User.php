@@ -31,6 +31,11 @@ class User extends Model
         return $this->hasMany('App\Models\Blog','user_id');
     }
 
+    public function tasks()
+    {
+        return $this->hasMany('App\Models\Task','user_id');
+    }
+
     public static function get_all_admin_list()
     {
         return DB::table('users')

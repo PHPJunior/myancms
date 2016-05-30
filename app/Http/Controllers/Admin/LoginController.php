@@ -27,18 +27,16 @@ class LoginController extends Controller
     /**
      * @return $this
      */
-    public function postLogin()
+    public function postLogin(Request $request)
     {
         try
         {
-            $input = Input::all();
-
             $rules = [
                 'email'    => 'required|email',
                 'password' => 'required',
             ];
 
-            $validator = Validator::make($input, $rules);
+            $validator = Validator::make($request->all(), $rules);
 
             if ($validator->fails())
             {
@@ -47,9 +45,9 @@ class LoginController extends Controller
                     ->withErrors($validator);
             }
 
-            $remember = (bool) Input::get('remember', false);
+            $remember = (bool) $request->get('remember', false);
 
-            if ($user = Sentinel::authenticate(Input::all(), $remember))
+            if ($user = Sentinel::authenticate($request->all(), $remember))
             {
                 Session::put('admin_id',$user->id);
                 Session::put('admin_first_name',$user->first_name);

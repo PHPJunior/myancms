@@ -18,9 +18,11 @@ class MemberController extends Controller
 {
 
     use ThrottlesLogins;
+    protected $siteSettings;
 
     /**
      * MemberController constructor.
+     * @param SiteSettings $siteSettings
      */
     public function __construct(SiteSettings $siteSettings)
     {

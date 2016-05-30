@@ -30,28 +30,46 @@ class InstallerController extends Controller
 
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function welcome()
     {
         return view('installer.welcome');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function environment()
     {
         $envConfig = SiteHelper::getEnvContent();
         return view('installer.environment', compact('envConfig'));
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function environmentSave(Request $request)
     {
         $message = SiteHelper::saveEnvFile($request);
         return Redirect::back()->with(['message' => $message]);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function user()
     {
         return view('installer.user');
     }
 
+    /**
+     * @param Request $request
+     * @param Database $database
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function userSave(Request $request, Database $database)
     {
         $rule = [
@@ -116,11 +134,18 @@ class InstallerController extends Controller
         }
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function setting()
     {
         return view('installer.setting');
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function saveSetting(Request $request)
     {
 
@@ -140,6 +165,10 @@ class InstallerController extends Controller
         return Redirect::to('install/finished');
     }
 
+    /**
+     * @param InstalledFile $installedFile
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function finished(InstalledFile $installedFile)
     {
         $installedFile->update();

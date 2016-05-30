@@ -19,6 +19,8 @@ class SettingController extends Controller
 {
     protected $module = 'setting';
     protected $permission = array();
+    protected $info;
+    protected $access;
 
     /**
      * SettingController constructor.

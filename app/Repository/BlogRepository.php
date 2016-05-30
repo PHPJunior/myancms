@@ -8,14 +8,19 @@
 
 namespace App\Repository;
 
-use App\FaceFile\BlogRepositoryInterface;
 use App\Models\Blog;
 
-class BlogRepository implements BlogRepositoryInterface
+/**
+ * Class BlogRepository
+ * @package App\Repository
+ */
+class BlogRepository
 {
+    protected $blog;
 
     /**
-     * @param Blog $blogs
+     * @param Blog $blog
+     * @internal param Blog $blogs
      */
     public function __construct(Blog $blog)
     {

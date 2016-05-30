@@ -22,6 +22,8 @@ class MenuController extends Controller
     protected $routes = array();
     protected $module = 'menu';
     protected $permission = array();
+    protected $info;
+    protected $access;
 
     public function __construct(Router $router)
     {

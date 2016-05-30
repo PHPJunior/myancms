@@ -21,6 +21,8 @@ class AdminController extends Controller
     protected $roles;
     protected $module = 'admin';
     protected $permission = array();
+    protected $access;
+    protected $info;
 
     /**
      * AdminController constructor.
@@ -70,7 +72,6 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        $input = Input::all();
 
         $rules = [
             'first_name' => 'required',
@@ -80,7 +81,7 @@ class AdminController extends Controller
             'password_confirm' => 'required|same:password',
         ];
 
-        $validator = Validator::make($input, $rules);
+        $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
             return Redirect::back()
@@ -88,7 +89,7 @@ class AdminController extends Controller
                 ->withErrors($validator);
         }
 
-        if ($user = Sentinel::registerAndActivate($input)) {
+        if ($user = Sentinel::registerAndActivate($request->all())) {
 
             $role = Sentinel::findRoleBySlug(Input::get('role'));
             $role->users()->attach($user);
@@ -147,7 +148,6 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $input = Input::all();
 
         $rules = [
             'first_name' => 'required',
@@ -160,16 +160,16 @@ class AdminController extends Controller
             $user_role = User::get_user_role($id);
             $rules['email'] .= ",email,{$user->email},email";
 
-            $messages = $this->validateUser($input, $rules);
+            $messages = $this->validateUser($request->all(), $rules);
 
             if ($messages->isEmpty()) {
 
                 if (Input::get('password')) {
                     $credentials = [
-                        'first_name' => Input::get('first_name'),
-                        'last_name' => Input::get('last_name'),
-                        'password' => Input::get('password'),
-                        'email' => Input::get('email'),
+                        'first_name' => $request->input('first_name'),
+                        'last_name' => $request->input('last_name'),
+                        'password' => $request->input('password'),
+                        'email' => $request->input('email'),
                     ];
                 } else {
                     $credentials = [
@@ -226,7 +226,7 @@ class AdminController extends Controller
         return $validator->errors();
     }
 
-    public function changePassword()
+    public function changePassword(Request $request)
     {
         $id = Session::get('admin_id');
         if ($id) {
@@ -234,7 +234,7 @@ class AdminController extends Controller
             if ($user) {
                 if (Input::get('password_data.password')) {
                     $credentials = [
-                        'password' => Input::get('password_data.password'),
+                        'password' => $request->input('password_data.password'),
                     ];
 
                     if (Sentinel::update($user, $credentials)) {

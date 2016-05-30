@@ -22,6 +22,9 @@ class CheckFile
         return $next($request);
     }
 
+    /**
+     * @return mixed
+     */
     private function alreadyInstalled()
     {
         return File::exists(storage_path('installed'));

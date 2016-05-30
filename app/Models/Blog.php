@@ -16,7 +16,7 @@ class Blog extends Model implements TaggableInterface
 
     public function user()
     {
-        return $this->belongsTo('App\user');
+        return $this->belongsTo('App\User');
     }
 
     public static function TagsList()

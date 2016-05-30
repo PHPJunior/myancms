@@ -15,6 +15,7 @@ Route::group(['middleware' => 'checkinstall'], function () {
 
     Route::auth();
 
+    //language Section
     Route::get('lang/{name}', function ($lang = 'en') {
         Session::forget('lang');
         Session::put('lang', $lang);
@@ -27,19 +28,23 @@ Route::group(['middleware' => 'checkinstall'], function () {
 
 //Installer Route
 Route::group(['prefix' => 'install','middleware'=>'checkfile'], function () {
-
+    //Welcome Page
     Route::get('/','InstallerController@welcome');
     Route::get('welcome', 'InstallerController@welcome');
 
+    //Check ENV
     Route::get('environment', 'InstallerController@environment');
     Route::post('environmentSave','InstallerController@environmentSave');
 
+    //Create User
     Route::get('user', 'InstallerController@user');
     Route::post('userSave', 'InstallerController@userSave');
 
+    //Site Setting
     Route::get('setting','InstallerController@setting');
     Route::post('saveSetting','InstallerController@saveSetting');
 
+    //Finished Install
     Route::get('finished', 'InstallerController@finished');
 
 });
@@ -47,9 +52,11 @@ Route::group(['prefix' => 'install','middleware'=>'checkfile'], function () {
 //Admin Route
 Route::group(['namespace' => 'Admin'], function () {
 
+    //login
     Route::get('letmein', 'LoginController@getLogin');
     Route::post('letmein', 'LoginController@postLogin');
 
+    //logout
     Route::get('byebye', 'LoginController@getLogout');
 
     Route::group(['middleware' => 'admin'], function () {
@@ -69,9 +76,10 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::post('general_setting/save_site_setting','SettingController@save_site_setting');
         Route::post('general_setting/email_server_data','EmailController@email_server_data');
 
-
+        //User Permission
         Route::get('module/manage_permission/{id}','ModuleController@manage_permission')->where('id', '[0-9]+');
 
+        //Change Password
         Route::post('changePassword','AdminController@changePassword');
         Route::post('module/save_user_permission/{id}/{module_id}','ModuleController@save_user_permission')->where(['id' => '[0-9]+', 'module_id' => '[0-9]+']);
 
@@ -89,7 +97,7 @@ Route::group(['namespace' => 'Admin'], function () {
 
         Route::post('menu/saveorder','MenuController@saveorder');
 
-        //Created Module Route
+        //include Created Module Route
         include ('module_routes.php');
     });
 

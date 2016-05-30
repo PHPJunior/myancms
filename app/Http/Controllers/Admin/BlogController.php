@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Blog;
+use App\Repository\BlogRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -14,16 +15,26 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use SiteHelper;
 
+/**
+ * @property array|bool|mixed access
+ */
 class BlogController extends Controller
 {
     protected $module = 'blog';
     protected $permission = array();
+    protected $blog;
+    protected $info;
 
-    public function __construct()
+    /**
+     * BlogController constructor.
+     * @param BlogRepository $blog
+     */
+    public function __construct(BlogRepository $blog)
     {
         parent::__construct();
         $this->info = SiteHelper::moduleInfo($this->module);
         $this->access = SiteHelper::checkPermission($this->info->id);
+        $this->blog = $blog;
     }
 
     /**
@@ -74,13 +85,13 @@ class BlogController extends Controller
         }
 
         $blog = new Blog();
-        $slug = Str::slug($request->get('title'));
+        $slug = Str::slug($request->input('title'));
         if (!$slug) {
             $slug = Str::random(7);
         }
         $blog->user_id = Session::get('admin_id');
-        $blog->title = $request->get("title");
-        $blog->description = $request->get('description');
+        $blog->title = $request->input("title");
+        $blog->description = $request->input('description');
         $blog->slug = $slug;
 
         if($request->hasFile('image')){
@@ -93,7 +104,7 @@ class BlogController extends Controller
 
         $tags = Blog::find($blog->id);
 
-        $tags->tag($request->get('tags'));
+        $tags->tag($request->input('tags'));
 
         return Redirect::back()->with('Message', 'New Blog is created');
     }

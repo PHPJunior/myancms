@@ -87,6 +87,7 @@
                             <div class="uk-form-row">
                                 <div class="uk-width-1-1">
                                     <button type="submit" class="md-btn md-btn-primary">Submit</button>
+                                    <button type="reset" class="md-btn md-btn-danger">Reset</button>
                                 </div>
                             </div>
                         </div>

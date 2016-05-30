@@ -3,22 +3,29 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Files;
-use App\Models\Settings;
+use App\Models\Module;
+use App\Repository\TaskRepository;
 use App\User;
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\Validator;
 
+/**
+ * @property TaskRepository task
+ */
 class DashboardController extends Controller
 {
     /**
      * DashboardController constructor.
+     * @param TaskRepository $task
      */
-    public function __construct()
+    public function __construct(TaskRepository $task)
     {
         parent::__construct();
+        $this->task = $task;
     }
 
     /**
@@ -26,11 +33,16 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $tasks = $this->task->taskList(Sentinel::check()->id);
         $user = User::all();
-        $count = count($user);
-        return view('admin.dashboard.index', compact('count'));
+        $module = Module::all();
+        $count = [
+            "user" => count($user),
+            "module" => count($module),
+        ];
+        return view('admin.dashboard.index', compact('count','tasks'));
     }
 
     public function documentation()
@@ -56,7 +68,18 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rule = [
+            'name' => 'required',
+            'due_date' => 'required',
+        ];
+
+        $validator = Validator::make($request->all(), $rule);
+
+        if ($validator->fails()) {
+            return Redirect::back()
+                ->withErrors($validator)
+                ->withInput();
+        }
     }
 
     /**

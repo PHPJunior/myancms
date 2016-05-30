@@ -19,7 +19,13 @@ class CmsController extends Controller
     protected $permission = array();
     protected $data = array();
     protected $model;
+    protected $access;
+    protected $info;
 
+    /**
+     * CmsController constructor.
+     * @param CmsPage $cmsPage
+     */
     public function __construct(CmsPage $cmsPage)
     {
         parent::__construct();

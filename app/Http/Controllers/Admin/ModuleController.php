@@ -17,6 +17,8 @@ class ModuleController extends Controller
 {
     protected $module = 'module';
     protected $permission = array();
+    protected $access;
+    protected $info;
 
     /**
      * ModuleController constructor.
@@ -62,18 +64,17 @@ class ModuleController extends Controller
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function save_user_permission($id, $module_id)
+    public function save_user_permission(Request $request,$id, $module_id)
     {
 
         $data = [
-            'create' => Input::get('create'),
-            'delete' => Input::get('delete'),
-            'view' => Input::get('view'),
-            'update' => Input::get('update'),
+            'create' => $request->input('create'),
+            'delete' => $request->input('delete'),
+            'view' =>   $request->input('view'),
+            'update' => $request->input('update'),
         ];
 
         $access_data = UserAccess::where('user_id', $id)->where('module_id', $module_id)->update(['access_data' => json_encode($data)]);
-
 
     }
 

@@ -15,7 +15,12 @@ class EmailController extends Controller
 {
     protected $module = 'email';
     protected $permission = array();
+    protected $info;
+    protected $access;
 
+    /**
+     * EmailController constructor.
+     */
     public function __construct()
     {
         parent::__construct();

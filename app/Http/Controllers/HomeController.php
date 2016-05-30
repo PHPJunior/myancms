@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * @property SiteSettings siteSettings
+ */
 class HomeController extends Controller
 {
 
@@ -21,6 +24,10 @@ class HomeController extends Controller
         $this->siteSettings = $siteSettings;
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(Request $request)
     {
         $theme = $this->siteSettings->find(1);

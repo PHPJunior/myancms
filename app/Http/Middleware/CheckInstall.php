@@ -24,6 +24,9 @@ class CheckInstall
         return Redirect::to('install/welcome');
     }
 
+    /**
+     * @return mixed
+     */
     private function alreadyInstalled()
     {
         return File::exists(storage_path('installed'));

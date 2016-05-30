@@ -17,6 +17,9 @@ class RoleController extends Controller
     protected $roles;
     protected $module = 'role';
     protected $permission = array();
+    protected $access;
+    protected $info;
+
     /**
      * RoleController constructor.
      */
@@ -60,14 +63,13 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $input = Input::all();
 
         $rules = [
             'name'       => 'required',
             'slug'        => 'required',
         ];
 
-        $validator = Validator::make($input, $rules);
+        $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails())
         {
@@ -76,10 +78,10 @@ class RoleController extends Controller
                 ->withErrors($validator);
         }else{
             $role = Sentinel::getRoleRepository()->createModel()->create([
-                'name' => Input::get('name'),
-                'slug' => Input::get('slug'),
+                'name' => $request->input('name'),
+                'slug' => $request->input('slug'),
                 'permissions' => [
-                    Input::get('slug') => true,
+                    $request->input('slug') => true,
                 ]
             ]);
 
@@ -118,14 +120,13 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $input = Input::all();
 
         $rules = [
             'name'       => 'required',
             'slug'        => 'required',
         ];
 
-        $validator = Validator::make($input, $rules);
+        $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails())
         {
@@ -134,7 +135,7 @@ class RoleController extends Controller
                 ->withErrors($validator);
         }else{
             $role = Sentinel::findRoleBySlug(Input::get('slug'));
-            $role->name = Input::get('name');
+            $role->name = $request->input('name');
             $role->save();
 
             return Redirect::to('role');
