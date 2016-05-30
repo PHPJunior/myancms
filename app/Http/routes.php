@@ -24,6 +24,9 @@ Route::group(['middleware' => 'checkinstall'], function () {
 
     Route::get('/', 'HomeController@index');
 
+    //Require Created Page Route
+    include ('page_routes.php');
+
 });
 
 //Installer Route

@@ -10,7 +10,6 @@ use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -91,7 +90,7 @@ class AdminController extends Controller
 
         if ($user = Sentinel::registerAndActivate($request->all())) {
 
-            $role = Sentinel::findRoleBySlug(Input::get('role'));
+            $role = Sentinel::findRoleBySlug($request->input('role'));
             $role->users()->attach($user);
 
             $data = [
@@ -164,7 +163,7 @@ class AdminController extends Controller
 
             if ($messages->isEmpty()) {
 
-                if (Input::get('password')) {
+                if ($request->input('password')) {
                     $credentials = [
                         'first_name' => $request->input('first_name'),
                         'last_name' => $request->input('last_name'),
@@ -173,17 +172,17 @@ class AdminController extends Controller
                     ];
                 } else {
                     $credentials = [
-                        'first_name' => Input::get('first_name'),
-                        'last_name' => Input::get('last_name'),
-                        'email' => Input::get('email'),
+                        'first_name' => $request->input('first_name'),
+                        'last_name' => $request->input('last_name'),
+                        'email' => $request->input('email'),
                     ];
                 }
-                if ($users = Sentinel::update($user, $credentials)) {
+                if ( Sentinel::update($user, $credentials)) {
                     $user = Sentinel::findById($id);
 
                     $role = Sentinel::findRoleBySlug($user_role->slug);
                     if ($role->users()->detach($user)) {
-                        $role = Sentinel::findRoleBySlug(Input::get('role'));
+                        $role = Sentinel::findRoleBySlug($request->input('role'));
                         $role->users()->attach($user);
                     }
 
@@ -232,7 +231,7 @@ class AdminController extends Controller
         if ($id) {
             $user = Sentinel::findById($id);
             if ($user) {
-                if (Input::get('password_data.password')) {
+                if ($request->input('password_data.password')) {
                     $credentials = [
                         'password' => $request->input('password_data.password'),
                     ];

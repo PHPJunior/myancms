@@ -141,7 +141,7 @@ class EmailController extends Controller
             $val .= "define('EMailEncryptionProtocol','" . $request->input('EMailEncryptionProtocol') . "');\n";
             $val .= "define('SMTPServerUsername','" . $request->input('SMTPServerUsername') . "');\n";
 
-            if($request->input('SMTPServerPassword') != '' || $request->input('SMTPServerPassword') != null ){
+            if($request->input('SMTPServerPassword') !== '' || $request->input('SMTPServerPassword') !== null ){
                 $val .= "define('SMTPServerPassword','" . $request->input('SMTPServerPassword') . "');\n";
             }else{
                 $val .= "define('SMTPServerPassword','" . $request->input('SMTPServerPassword02') . "');\n";

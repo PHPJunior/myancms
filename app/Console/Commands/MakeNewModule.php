@@ -103,7 +103,7 @@ class MakeNewModule extends Command
             }
         }
 
-        if($model_name != null || $model_name != ' '){
+        if($model_name !== null || $model_name !== ' '){
             $this->call('make:model',[
                'name' => $model_name, '--migration' => true
             ]);

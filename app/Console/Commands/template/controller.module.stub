@@ -12,6 +12,8 @@ class DummyClass extends Controller
 {
         protected $module = 'DummyModule';
         protected $permission = array();
+        protected $access;
+        protected $info;
 
         public function __construct()
         {

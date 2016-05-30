@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\EmailSetting;
 use App\Models\SiteSettings;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use SiteHelper;
 
@@ -107,7 +103,7 @@ class SettingController extends Controller
 
             $files = scandir($template . '/resources/lang/en/');
             foreach ($files as $f) {
-                if ($f != "." and $f != ".." and $f != 'info.json') {
+                if ($f != "." && $f != ".." && $f != 'info.json') {
                     copy($template . '/resources/lang/en/' . $f, $template . '/resources/lang/' . $folder . '/' . $f);
                 }
             }
@@ -158,7 +154,11 @@ class SettingController extends Controller
     {
         foreach (glob($dir . '/*') as $file) {
             if (is_dir($file)) {
-                removedir($file);
+
+                foreach (glob($file . '/*') as $files) {
+                    unlink($files);
+                }
+                rmdir($file);
             } else {
                 unlink($file);
             }
@@ -177,9 +177,12 @@ class SettingController extends Controller
         $dir = base_path() . "/storage/logs";
         foreach (glob($dir . '/*') as $file) {
             if (is_dir($file)) {
-                //removedir($file);
-            } else {
 
+                foreach (glob($file . '/*') as $files) {
+                    unlink($files);
+                }
+                rmdir($file);
+            } else {
                 unlink($file);
             }
         }
@@ -187,9 +190,12 @@ class SettingController extends Controller
         $dir = base_path() . "/storage/framework/views";
         foreach (glob($dir . '/*') as $file) {
             if (is_dir($file)) {
-                //removedir($file);
-            } else {
 
+                foreach (glob($file . '/*') as $files) {
+                    unlink($files);
+                }
+                rmdir($file);
+            } else {
                 unlink($file);
             }
         }

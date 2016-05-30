@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\CmsPage;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -79,14 +78,14 @@ class CmsController extends Controller
 
             $files = scandir($template . '/resources/views/theme/default/');
             foreach ($files as $f) {
-                if ($f != "." and $f != ".." and $f != "info.json") {
+                if ($f != "." && $f != ".." && $f != "info.json") {
                     if (is_dir($template . '/resources/views/theme/default/' . $f)) {
 
                         mkdir($template . "/resources/views/theme/" . $folder . '/' . $f, 0777);
                         $folders = scandir($template.'/resources/views/theme/default/'.$f.'/');
 
                         foreach ($folders as $file) {
-                            if ($file != "." and $file != "..") {
+                            if ($file != "." && $file != "..") {
                                 copy($template . '/resources/views/theme/default/' . $f . '/' . $file, $template . '/resources/views/theme/' . $folder . '/' . $f . '/' . $file);
                             }
                         }
@@ -296,12 +295,11 @@ class CmsController extends Controller
     public function createRoute()
     {
         $rows = CmsPage::all();
-        $val = "<?php \n \nRoute::group(['middleware' => 'checkinstall'], function () { \n";
+        $val = "<?php ";
         foreach ($rows as $row) {
             $slug = $row->slug;
-            $val .= "    Route::get('{$slug}', 'HomeController@index');\n";
+            $val .= "Route::get('{$slug}', 'HomeController@index');\n";
         }
-        $val .= "});";
         $filename = app_path() . '/Http/page_routes.php';
         $fp = fopen($filename, "w+");
         fwrite($fp, $val);
