@@ -159,21 +159,25 @@ class CmsController extends Controller
         if ($validator->passes()) {
 
             foreach(SiteHelper::themeOption() as $themes){
-                $filename = base_path() . "/resources/views/theme/" . $themes['folder'] . "/pages/" . $request->get('filename') . ".blade.php";
+                $filename = base_path() . "/resources/views/theme/" . $themes['folder'] . "/pages/" . $request->input('filename') . ".blade.php";
 
-                $content = $request->get('content');
+                $content = $request->input('content');
                 $fp = fopen($filename, "w+");
                 fwrite($fp, $content);
                 fclose($fp);
             }
 
             $page = new CmsPage();
-            $page->title = $request->get('title');
-            $page->slug = strtolower($request->get('alias'));
-            $page->filename = strtolower($request->get('filename'));
-            $page->status = $request->get('status');
-            $page->template = $request->get('template');
-            $page->database_table = $request->get('database_table');
+            $page->title = $request->input('title');
+            $page->slug = strtolower($request->input('alias'));
+            $page->filename = strtolower($request->input('filename'));
+            $page->status = $request->input('status');
+            $page->template = $request->input('template');
+            if($request->input('database_table') == ' ') {
+                $page->database_table = null;
+            }else{
+                $page->database_table = $request->input('database_table');
+            }
             $page->save();
 
             self::createRoute();
@@ -205,7 +209,7 @@ class CmsController extends Controller
     public function edit(Request $request, $id)
     {
         $page = $this->model->find($id);
-        $theme = $request->get('theme');
+        $theme = $request->input('theme');
 
         if ($page) {
             $filename = base_path() . "/resources/views/theme/" . $theme . "/pages/" . $page->filename . ".blade.php";
@@ -253,20 +257,24 @@ class CmsController extends Controller
         $validator = Validator::make($request->all(), $rules);
 
         if ($validator->passes()) {
-            $filename = base_path() . "/resources/views/theme/" . $request->get('theme') . "/pages/" . $request->get('filename') . ".blade.php";
+            $filename = base_path() . "/resources/views/theme/" . $request->input('theme') . "/pages/" . $request->input('filename') . ".blade.php";
 
-            $content = $request->get('content');
+            $content = $request->input('content');
             $fp = fopen($filename, "w+");
             fwrite($fp, $content);
             fclose($fp);
 
             $page = $this->model->find($id);
-            $page->title = $request->get('title');
-            $page->slug = strtolower($request->get('alias'));
-            $page->filename = strtolower($request->get('filename'));
-            $page->status = $request->get('status');
-            $page->template = $request->get('template');
-            $page->database_table = $request->get('database_table');
+            $page->title = $request->input('title');
+            $page->slug = strtolower($request->input('alias'));
+            $page->filename = strtolower($request->input('filename'));
+            $page->status = $request->input('status');
+            $page->template = $request->input('template');
+            if($request->input('database_table') == ' ') {
+                $page->database_table = null;
+            }else{
+                $page->database_table = $request->input('database_table');
+            }
             $page->save();
 
             self::createRoute();
@@ -295,7 +303,7 @@ class CmsController extends Controller
     public function createRoute()
     {
         $rows = CmsPage::all();
-        $val = "<?php ";
+        $val = "<?php \n";
         foreach ($rows as $row) {
             $slug = $row->slug;
             $val .= "Route::get('{$slug}', 'HomeController@index');\n";

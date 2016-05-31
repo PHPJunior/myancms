@@ -49,13 +49,6 @@ class LoginController extends Controller
 
             if ($user = Sentinel::authenticate($request->all(), $remember))
             {
-                Session::put('admin_id',$user->id);
-                Session::put('admin_first_name',$user->first_name);
-                Session::put('admin_last_name',$user->last_name);
-                Session::put('admin_email',$user->email);
-                Session::put('last_login',$user->last_login);
-                Session::put('is_logged_in','true');
-
                 return Redirect::intended('dashboard');
             }
             Session::flash('status','Invalid Login or password!');

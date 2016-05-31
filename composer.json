@@ -1,7 +1,7 @@
 {
     "name": "php-junior/myancms",
     "description": "MyanCMS will kickstart all your future applications.",
-    "keywords": ["cms","framework", "laravel"],
+    "keywords": ["cms","framework", "laravel", "php"],
     "license": "MIT",
     "type": "CMS",
     "authors": [
