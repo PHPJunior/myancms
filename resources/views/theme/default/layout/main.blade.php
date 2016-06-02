@@ -75,6 +75,9 @@
 <script src="{{ asset('theme/default/js/materialize.js') }}"></script>
 <script src="{{ asset('theme/default/js/init.js') }}"></script>
 
+<script id="dsq-count-scr" src="//myancms.disqus.com/count.js" async></script>
+
+
 @yield('script')
 
 <script>

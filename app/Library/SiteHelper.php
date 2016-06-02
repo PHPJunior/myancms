@@ -67,7 +67,7 @@ class SiteHelper
     public static function checkPermission($id)
     {
         $row = DB::table('user_accesses')->where('module_id','=', $id)
-            ->where('user_id','=', Session::get('admin_id'))
+            ->where('user_id','=', Sentinel::check()->id )
             ->get();
 
         if (count($row) >= 1) {

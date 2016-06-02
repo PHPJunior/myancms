@@ -170,7 +170,7 @@
                         </div>
                     </li>
                     <li data-uk-dropdown="{mode:'click'}">
-                        <a href="#" class="user_action_image"><img class="md-user-image" src="http://www.gravatar.com/avatar/{{ md5(strtolower(trim( \Session::get('admin_email') ))) }}/?d=wavatar&s=100&r=g" alt=""/></a>
+                        <a href="#" class="user_action_image"><img class="md-user-image" src="http://www.gravatar.com/avatar/{{ md5(strtolower(trim( \Sentinel::check()->email ))) }}/?d=wavatar&s=100&r=g" alt=""/></a>
                         <div class="uk-dropdown uk-dropdown-small uk-dropdown-flip">
                             <ul class="uk-nav js-uk-prevent">
                                 <li><a href="#" data-uk-modal="{target : '#change_password'}">Change Password</a></li>

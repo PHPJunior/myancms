@@ -20,8 +20,8 @@ class AdminController extends Controller
     protected $roles;
     protected $module = 'admin';
     protected $permission = array();
-    protected $access;
     protected $info;
+    protected $access;
 
     /**
      * AdminController constructor.
