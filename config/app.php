@@ -159,7 +159,7 @@ return [
         Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
         Cartalyst\Tags\TagsServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-
+        Arcanedev\LogViewer\LogViewerServiceProvider::class,
     ],
 
     /*

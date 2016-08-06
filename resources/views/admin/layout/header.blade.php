@@ -1,258 +1,436 @@
-<header id="header_main">
-    <div class="header_main_content">
-        <nav class="uk-navbar">
-
-            <!-- main sidebar switch -->
-            <a href="#" id="sidebar_main_toggle" class="sSwitch sSwitch_left">
-                <span class="sSwitchIcon"></span>
-            </a>
-
-            <!-- secondary sidebar switch -->
-            <a href="#" id="sidebar_secondary_toggle" class="sSwitch sSwitch_right sidebar_secondary_check">
-                <span class="sSwitchIcon"></span>
-            </a>
-
-            <div id="menu_top_dropdown" class="uk-float-left uk-hidden-small">
-                <div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}">
-                    <a href="#" class="top_menu_toggle"><i class="material-icons md-24">&#xE8F0;</i></a>
-                    <div class="uk-dropdown uk-dropdown-width-3">
-                        <div class="uk-grid uk-dropdown-grid" data-uk-grid-margin>
-                            <div class="uk-width-2-3">
-                                <div class="uk-grid uk-grid-width-medium-1-3 uk-margin-top uk-margin-bottom uk-text-center" data-uk-grid-margin>
-                                    <a href="page_mailbox.html">
-                                        <i class="material-icons md-36">&#xE158;</i>
-                                        <span class="uk-text-muted uk-display-block">Mailbox</span>
-                                    </a>
-                                    <a href="page_invoices.html">
-                                        <i class="material-icons md-36">&#xE53E;</i>
-                                        <span class="uk-text-muted uk-display-block">Invoices</span>
-                                    </a>
-                                    <a href="page_chat.html">
-                                        <i class="material-icons md-36 md-color-red-600">&#xE0B9;</i>
-                                        <span class="uk-text-muted uk-display-block">Chat</span>
-                                    </a>
-                                    <a href="page_scrum_board.html">
-                                        <i class="material-icons md-36">&#xE85C;</i>
-                                        <span class="uk-text-muted uk-display-block">Scrum Board</span>
-                                    </a>
-                                    <a href="page_snippets.html">
-                                        <i class="material-icons md-36">&#xE86F;</i>
-                                        <span class="uk-text-muted uk-display-block">Snippets</span>
-                                    </a>
-                                    <a href="page_user_profile.html">
-                                        <i class="material-icons md-36">&#xE87C;</i>
-                                        <span class="uk-text-muted uk-display-block">User profile</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="uk-width-1-3">
-                                <ul class="uk-nav uk-nav-dropdown uk-panel">
-                                    <li class="uk-nav-header">Components</li>
-                                    <li><a href="components_accordion.html">Accordions</a></li>
-                                    <li><a href="components_buttons.html">Buttons</a></li>
-                                    <li><a href="components_notifications.html">Notifications</a></li>
-                                    <li><a href="components_sortable.html">Sortable</a></li>
-                                    <li><a href="components_tabs.html">Tabs</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div class="page-header navbar navbar-fixed-top">
+    <!-- BEGIN HEADER INNER -->
+    <div class="page-header-inner ">
+        <!-- BEGIN LOGO -->
+        <div class="page-logo">
+            <a href="index.html">
+                <img src="../assets/layouts/layout4/img/logo-light.png" alt="logo" class="logo-default" /> </a>
+            <div class="menu-toggler sidebar-toggler">
+                <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
             </div>
-
-            <div class="uk-navbar-flip">
-                <ul class="uk-navbar-nav user_actions">
-                    <li><a href="#" id="full_screen_toggle" class="user_action_icon uk-visible-large"><i class="material-icons md-24 md-light">&#xE5D0;</i></a></li>
-                    <li><a href="#" id="main_search_btn" class="user_action_icon"><i class="material-icons md-24 md-light">&#xE8B6;</i></a></li>
-                    <li data-uk-dropdown="{mode:'click',pos:'bottom-right'}">
-                        <a href="#" class="user_action_icon"><i class="material-icons md-24 md-light">&#xE7F4;</i><span class="uk-badge">16</span></a>
-                        <div class="uk-dropdown uk-dropdown-xlarge">
-                            <div class="md-card-content">
-                                <ul class="uk-tab uk-tab-grid" data-uk-tab="{connect:'#header_alerts',animation:'slide-horizontal'}">
-                                    <li class="uk-width-1-2 uk-active"><a href="#" class="js-uk-prevent uk-text-small">Messages (12)</a></li>
-                                    <li class="uk-width-1-2"><a href="#" class="js-uk-prevent uk-text-small">Alerts (4)</a></li>
-                                </ul>
-                                <ul id="header_alerts" class="uk-switcher uk-margin">
-                                    <li>
-                                        <ul class="md-list md-list-addon">
-                                            <li>
-                                                <div class="md-list-addon-element">
-                                                    <span class="md-user-letters md-bg-cyan">tn</span>
-                                                </div>
-                                                <div class="md-list-content">
-                                                    <span class="md-list-heading"><a href="pages_mailbox.html">Aut illum.</a></span>
-                                                    <span class="uk-text-small uk-text-muted">Sit modi aut nulla rerum quae ut sapiente at molestiae.</span>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="md-list-addon-element">
-                                                    <img class="md-user-image md-list-addon-avatar" src="backend/img/avatars/avatar_07_tn.png" alt=""/>
-                                                </div>
-                                                <div class="md-list-content">
-                                                    <span class="md-list-heading"><a href="pages_mailbox.html">Placeat voluptatibus architecto.</a></span>
-                                                    <span class="uk-text-small uk-text-muted">Quo velit sed doloremque at ea.</span>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="md-list-addon-element">
-                                                    <span class="md-user-letters md-bg-light-green">xa</span>
-                                                </div>
-                                                <div class="md-list-content">
-                                                    <span class="md-list-heading"><a href="pages_mailbox.html">Est aut totam.</a></span>
-                                                    <span class="uk-text-small uk-text-muted">Quia illum nemo enim tempore ea.</span>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="md-list-addon-element">
-                                                    <img class="md-user-image md-list-addon-avatar" src="backend/img/avatars/avatar_02_tn.png" alt=""/>
-                                                </div>
-                                                <div class="md-list-content">
-                                                    <span class="md-list-heading"><a href="pages_mailbox.html">Consequatur dolorem velit.</a></span>
-                                                    <span class="uk-text-small uk-text-muted">Consequatur iste rerum quos omnis voluptatem perspiciatis excepturi.</span>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="md-list-addon-element">
-                                                    <img class="md-user-image md-list-addon-avatar" src="backend/img/avatars/avatar_09_tn.png" alt=""/>
-                                                </div>
-                                                <div class="md-list-content">
-                                                    <span class="md-list-heading"><a href="pages_mailbox.html">Reiciendis ut aut.</a></span>
-                                                    <span class="uk-text-small uk-text-muted">Omnis sed omnis corrupti possimus accusamus adipisci id qui assumenda.</span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <div class="uk-text-center uk-margin-top uk-margin-small-bottom">
-                                            <a href="page_mailbox.html" class="md-btn md-btn-flat md-btn-flat-primary js-uk-prevent">Show All</a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <ul class="md-list md-list-addon">
-                                            <li>
-                                                <div class="md-list-addon-element">
-                                                    <i class="md-list-addon-icon material-icons uk-text-warning">&#xE8B2;</i>
-                                                </div>
-                                                <div class="md-list-content">
-                                                    <span class="md-list-heading">Natus blanditiis.</span>
-                                                    <span class="uk-text-small uk-text-muted uk-text-truncate">Perspiciatis ipsa commodi doloribus aut.</span>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="md-list-addon-element">
-                                                    <i class="md-list-addon-icon material-icons uk-text-success">&#xE88F;</i>
-                                                </div>
-                                                <div class="md-list-content">
-                                                    <span class="md-list-heading">Excepturi rem officiis.</span>
-                                                    <span class="uk-text-small uk-text-muted uk-text-truncate">Expedita eum nesciunt nulla omnis et reprehenderit aut.</span>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="md-list-addon-element">
-                                                    <i class="md-list-addon-icon material-icons uk-text-danger">&#xE001;</i>
-                                                </div>
-                                                <div class="md-list-content">
-                                                    <span class="md-list-heading">Vel voluptatem.</span>
-                                                    <span class="uk-text-small uk-text-muted uk-text-truncate">Voluptas fuga et exercitationem suscipit vel.</span>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="md-list-addon-element">
-                                                    <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8FD;</i>
-                                                </div>
-                                                <div class="md-list-content">
-                                                    <span class="md-list-heading">Repudiandae voluptatibus possimus.</span>
-                                                    <span class="uk-text-small uk-text-muted uk-text-truncate">Molestias quia libero est molestiae enim vitae in.</span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+        </div>
+        <!-- END LOGO -->
+        <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
+        <!-- END RESPONSIVE MENU TOGGLER -->
+        <!-- BEGIN PAGE ACTIONS -->
+        <!-- DOC: Remove "hide" class to enable the page header actions -->
+        <div class="page-actions">
+            <div class="btn-group">
+                <button type="button" class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                    <span class="hidden-sm hidden-xs">Actions&nbsp;</span>
+                    <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="javascript:;">
+                            <i class="icon-docs"></i> New Post </a>
                     </li>
-                    <li data-uk-dropdown="{mode:'click'}">
-                        <a href="#" class="user_action_image"><img class="md-user-image" src="http://www.gravatar.com/avatar/{{ md5(strtolower(trim( \Sentinel::check()->email ))) }}/?d=wavatar&s=100&r=g" alt=""/></a>
-                        <div class="uk-dropdown uk-dropdown-small uk-dropdown-flip">
-                            <ul class="uk-nav js-uk-prevent">
-                                <li><a href="#" data-uk-modal="{target : '#change_password'}">Change Password</a></li>
-                                <li><a href="{{ url('byebye') }}">Logout</a></li>
-                            </ul>
-                        </div>
+                    <li>
+                        <a href="javascript:;">
+                            <i class="icon-tag"></i> New Comment </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <i class="icon-share"></i> Share </a>
+                    </li>
+                    <li class="divider"> </li>
+                    <li>
+                        <a href="javascript:;">
+                            <i class="icon-flag"></i> Comments
+                            <span class="badge badge-success">4</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <i class="icon-users"></i> Feedbacks
+                            <span class="badge badge-danger">2</span>
+                        </a>
                     </li>
                 </ul>
             </div>
-        </nav>
-    </div>
-    <div class="header_main_search_form">
-        <i class="md-icon header_main_search_close material-icons">&#xE5CD;</i>
-        <form class="uk-form">
-            <input type="text" class="header_main_search_input" />
-            <button class="header_main_search_btn uk-button-link"><i class="md-icon material-icons">&#xE8B6;</i></button>
-        </form>
-    </div>
-
-    <div class="uk-modal" id="change_password">
-        <div class="uk-modal-dialog">
-            <div class="uk-modal-header">
-                <h3 class="uk-modal-title">Change Password</h3>
-            </div>
-            <form id="password_data" data-parsley-validate>
-                <div class="uk-grid" data-uk-grid-margin="">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <div class="uk-width-medium-1-2">
-                        <div class="uk-form-row" parsley-row >
-                            <div class="md-input-wrapper"><label>Passsword</label><input id="password" class="md-input" name="password" required type="password"><span class="md-input-bar"></span></div>
-                        </div>
-                    </div>
-                    <div class="uk-width-medium-1-2">
-                        <div class="uk-form-row" parsley-row >
-                            <div class="md-input-wrapper"><label>Comfirm Passsword</label><input id="con_password" data-parsley-equalto="#password"	class="md-input" name="password_comfirmation" required type="password"><span class="md-input-bar"></span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="uk-modal-footer uk-text-right">
-                    <button type="button" class="md-btn md-btn-flat uk-modal-close">Close</button>
-                    <button type="submit" class="md-btn md-btn-flat md-btn-flat-primary uk-modal-close" onclick="changepassword()">Submit</button>
+        </div>
+        <!-- END PAGE ACTIONS -->
+        <!-- BEGIN PAGE TOP -->
+        <div class="page-top">
+            <!-- BEGIN HEADER SEARCH BOX -->
+            <!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
+            <form class="search-form" action="page_general_search_2.html" method="GET">
+                <div class="input-group">
+                    <input type="text" class="form-control input-sm" placeholder="Search..." name="query">
+                            <span class="input-group-btn">
+                                <a href="javascript:;" class="btn submit">
+                                    <i class="icon-magnifier"></i>
+                                </a>
+                            </span>
                 </div>
             </form>
+            <!-- END HEADER SEARCH BOX -->
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <div class="top-menu">
+                <ul class="nav navbar-nav pull-right">
+                    <li class="separator hide"> </li>
+                    <!-- BEGIN NOTIFICATION DROPDOWN -->
+                    <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                    <li class="dropdown dropdown-extended dropdown-notification dropdown-dark" id="header_notification_bar">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <i class="icon-bell"></i>
+                            <span class="badge badge-success"> 7 </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="external">
+                                <h3>
+                                    <span class="bold">12 pending</span> notifications</h3>
+                                <a href="page_user_profile_1.html">view all</a>
+                            </li>
+                            <li>
+                                <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="time">just now</span>
+                                                    <span class="details">
+                                                        <span class="label label-sm label-icon label-success">
+                                                            <i class="fa fa-plus"></i>
+                                                        </span> New user registered. </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="time">3 mins</span>
+                                                    <span class="details">
+                                                        <span class="label label-sm label-icon label-danger">
+                                                            <i class="fa fa-bolt"></i>
+                                                        </span> Server #12 overloaded. </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="time">10 mins</span>
+                                                    <span class="details">
+                                                        <span class="label label-sm label-icon label-warning">
+                                                            <i class="fa fa-bell-o"></i>
+                                                        </span> Server #2 not responding. </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="time">14 hrs</span>
+                                                    <span class="details">
+                                                        <span class="label label-sm label-icon label-info">
+                                                            <i class="fa fa-bullhorn"></i>
+                                                        </span> Application error. </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="time">2 days</span>
+                                                    <span class="details">
+                                                        <span class="label label-sm label-icon label-danger">
+                                                            <i class="fa fa-bolt"></i>
+                                                        </span> Database overloaded 68%. </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="time">3 days</span>
+                                                    <span class="details">
+                                                        <span class="label label-sm label-icon label-danger">
+                                                            <i class="fa fa-bolt"></i>
+                                                        </span> A user IP blocked. </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="time">4 days</span>
+                                                    <span class="details">
+                                                        <span class="label label-sm label-icon label-warning">
+                                                            <i class="fa fa-bell-o"></i>
+                                                        </span> Storage Server #4 not responding dfdfdfd. </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="time">5 days</span>
+                                                    <span class="details">
+                                                        <span class="label label-sm label-icon label-info">
+                                                            <i class="fa fa-bullhorn"></i>
+                                                        </span> System Error. </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="time">9 days</span>
+                                                    <span class="details">
+                                                        <span class="label label-sm label-icon label-danger">
+                                                            <i class="fa fa-bolt"></i>
+                                                        </span> Storage server failed. </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- END NOTIFICATION DROPDOWN -->
+                    <li class="separator hide"> </li>
+                    <!-- BEGIN INBOX DROPDOWN -->
+                    <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                    <li class="dropdown dropdown-extended dropdown-inbox dropdown-dark" id="header_inbox_bar">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <i class="icon-envelope-open"></i>
+                            <span class="badge badge-danger"> 4 </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="external">
+                                <h3>You have
+                                    <span class="bold">7 New</span> Messages</h3>
+                                <a href="app_inbox.html">view all</a>
+                            </li>
+                            <li>
+                                <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
+                                    <li>
+                                        <a href="#">
+                                                    <span class="photo">
+                                                        <img src="../assets/layouts/layout3/img/avatar2.jpg" class="img-circle" alt=""> </span>
+                                                    <span class="subject">
+                                                        <span class="from"> Lisa Wong </span>
+                                                        <span class="time">Just Now </span>
+                                                    </span>
+                                            <span class="message"> Vivamus sed auctor nibh congue nibh. auctor nibh auctor nibh... </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                                    <span class="photo">
+                                                        <img src="../assets/layouts/layout3/img/avatar3.jpg" class="img-circle" alt=""> </span>
+                                                    <span class="subject">
+                                                        <span class="from"> Richard Doe </span>
+                                                        <span class="time">16 mins </span>
+                                                    </span>
+                                            <span class="message"> Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                                    <span class="photo">
+                                                        <img src="../assets/layouts/layout3/img/avatar1.jpg" class="img-circle" alt=""> </span>
+                                                    <span class="subject">
+                                                        <span class="from"> Bob Nilson </span>
+                                                        <span class="time">2 hrs </span>
+                                                    </span>
+                                            <span class="message"> Vivamus sed nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                                    <span class="photo">
+                                                        <img src="../assets/layouts/layout3/img/avatar2.jpg" class="img-circle" alt=""> </span>
+                                                    <span class="subject">
+                                                        <span class="from"> Lisa Wong </span>
+                                                        <span class="time">40 mins </span>
+                                                    </span>
+                                            <span class="message"> Vivamus sed auctor 40% nibh congue nibh... </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                                    <span class="photo">
+                                                        <img src="../assets/layouts/layout3/img/avatar3.jpg" class="img-circle" alt=""> </span>
+                                                    <span class="subject">
+                                                        <span class="from"> Richard Doe </span>
+                                                        <span class="time">46 mins </span>
+                                                    </span>
+                                            <span class="message"> Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- END INBOX DROPDOWN -->
+                    <li class="separator hide"> </li>
+                    <!-- BEGIN TODO DROPDOWN -->
+                    <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                    <li class="dropdown dropdown-extended dropdown-tasks dropdown-dark" id="header_task_bar">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <i class="icon-calendar"></i>
+                            <span class="badge badge-primary"> 3 </span>
+                        </a>
+                        <ul class="dropdown-menu extended tasks">
+                            <li class="external">
+                                <h3>You have
+                                    <span class="bold">12 pending</span> tasks</h3>
+                                <a href="?p=page_todo_2">view all</a>
+                            </li>
+                            <li>
+                                <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
+                                    <li>
+                                        <a href="javascript:;">
+                                                    <span class="task">
+                                                        <span class="desc">New release v1.2 </span>
+                                                        <span class="percent">30%</span>
+                                                    </span>
+                                                    <span class="progress">
+                                                        <span style="width: 40%;" class="progress-bar progress-bar-success" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="sr-only">40% Complete</span>
+                                                        </span>
+                                                    </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                                    <span class="task">
+                                                        <span class="desc">Application deployment</span>
+                                                        <span class="percent">65%</span>
+                                                    </span>
+                                                    <span class="progress">
+                                                        <span style="width: 65%;" class="progress-bar progress-bar-danger" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="sr-only">65% Complete</span>
+                                                        </span>
+                                                    </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                                    <span class="task">
+                                                        <span class="desc">Mobile app release</span>
+                                                        <span class="percent">98%</span>
+                                                    </span>
+                                                    <span class="progress">
+                                                        <span style="width: 98%;" class="progress-bar progress-bar-success" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="sr-only">98% Complete</span>
+                                                        </span>
+                                                    </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                                    <span class="task">
+                                                        <span class="desc">Database migration</span>
+                                                        <span class="percent">10%</span>
+                                                    </span>
+                                                    <span class="progress">
+                                                        <span style="width: 10%;" class="progress-bar progress-bar-warning" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="sr-only">10% Complete</span>
+                                                        </span>
+                                                    </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                                    <span class="task">
+                                                        <span class="desc">Web server upgrade</span>
+                                                        <span class="percent">58%</span>
+                                                    </span>
+                                                    <span class="progress">
+                                                        <span style="width: 58%;" class="progress-bar progress-bar-info" aria-valuenow="58" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="sr-only">58% Complete</span>
+                                                        </span>
+                                                    </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                                    <span class="task">
+                                                        <span class="desc">Mobile development</span>
+                                                        <span class="percent">85%</span>
+                                                    </span>
+                                                    <span class="progress">
+                                                        <span style="width: 85%;" class="progress-bar progress-bar-success" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="sr-only">85% Complete</span>
+                                                        </span>
+                                                    </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                                    <span class="task">
+                                                        <span class="desc">New UI release</span>
+                                                        <span class="percent">38%</span>
+                                                    </span>
+                                                    <span class="progress progress-striped">
+                                                        <span style="width: 38%;" class="progress-bar progress-bar-important" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="sr-only">38% Complete</span>
+                                                        </span>
+                                                    </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- END TODO DROPDOWN -->
+                    <!-- BEGIN USER LOGIN DROPDOWN -->
+                    <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                    <li class="dropdown dropdown-user dropdown-dark">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <span class="username username-hide-on-mobile"> Nick </span>
+                            <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
+                            <img alt="" class="img-circle" src="../assets/layouts/layout4/img/avatar9.jpg" /> </a>
+                        <ul class="dropdown-menu dropdown-menu-default">
+                            <li>
+                                <a href="page_user_profile_1.html">
+                                    <i class="icon-user"></i> My Profile </a>
+                            </li>
+                            <li>
+                                <a href="app_calendar.html">
+                                    <i class="icon-calendar"></i> My Calendar </a>
+                            </li>
+                            <li>
+                                <a href="app_inbox.html">
+                                    <i class="icon-envelope-open"></i> My Inbox
+                                    <span class="badge badge-danger"> 3 </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="app_todo_2.html">
+                                    <i class="icon-rocket"></i> My Tasks
+                                    <span class="badge badge-success"> 7 </span>
+                                </a>
+                            </li>
+                            <li class="divider"> </li>
+                            <li>
+                                <a href="page_user_lock_1.html">
+                                    <i class="icon-lock"></i> Lock Screen </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('byebye') }}">
+                                    <i class="icon-key"></i> Log Out </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- END USER LOGIN DROPDOWN -->
+                    <!-- BEGIN LANGUAGE BAR -->
+                    <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                    <li class="dropdown dropdown-language">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <img alt="" src="../assets/global/img/flags/us.png">
+                            <span class="langname"> US </span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            @foreach(SiteHelper::langOption() as $lang)
+                                <li>
+                                    <a href="{{ URL::to('/lang/'.$lang['folder'])}}" >
+                                        <i class="item-icon @if($lang['folder'] == 'mm' || $lang['folder'] == 'uni' )flag-MM @else flag-GB @endif"></i>
+                                        <label for="#">&nbsp;&nbsp;{{  $lang['name'] }}</label>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                    <!-- END LANGUAGE BAR -->
+                    <!-- BEGIN QUICK SIDEBAR TOGGLER -->
+                    <li class="dropdown dropdown-extended quick-sidebar-toggler">
+                        <span class="sr-only">Toggle Quick Sidebar</span>
+                        <i class="icon-logout"></i>
+                    </li>
+                    <!-- END QUICK SIDEBAR TOGGLER -->
+                </ul>
+            </div>
+            <!-- END TOP NAVIGATION MENU -->
         </div>
+        <!-- END PAGE TOP -->
     </div>
-</header>
-
-<script>
-    function changepassword() {
-        altair_helpers.content_preloader_show();
-        $contact_data = $('#password_data');
-        var form_serialized = JSON.stringify($contact_data.serializeObject(), null, 2);
-
-        $.ajax({
-            url: '{{ url('changePassword') }}',
-            type: 'post',
-            data: {
-                'password_data': $contact_data.serializeObject(),
-            },
-            success: function (data, textStatus, jQxhr) {
-                UIkit.notify({
-                    message: 'Sucessfully Change Password',
-                    status: 'success',
-                    timeout: 1000,
-                    pos: 'top-right',
-                    onClose: function () {
-                        altair_helpers.content_preloader_hide();
-                    }
-                });
-            },
-            error: function (jqXhr, textStatus, errorThrown) {
-                UIkit.notify({
-                    message: 'Something went wrong.',
-                    status: 'danger',
-                    timeout: 1000,
-                    pos: 'top-right',
-                    onClose: function () {
-                        altair_helpers.content_preloader_hide();
-                    }
-                });
-            }
-        });
-
-    }
-</script>
+    <!-- END HEADER INNER -->
+</div>

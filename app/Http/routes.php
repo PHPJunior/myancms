@@ -101,7 +101,8 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::post('menu/saveorder','MenuController@saveorder');
 
         //include Created Module Route
-        include ('module_routes.php');
+        include (__DIR__.'/module_routes.php');
+        require (__DIR__.'/log-viewer.php');
     });
 
 });

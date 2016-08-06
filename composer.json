@@ -16,7 +16,8 @@
         "laravel/framework": "5.2.*",
         "cartalyst/sentinel": "2.0.*",
         "laravelcollective/html": "5.2.*",
-        "cartalyst/tags": "2.0.*"
+        "cartalyst/tags": "2.0.*",
+        "arcanedev/log-viewer": "^3.10"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

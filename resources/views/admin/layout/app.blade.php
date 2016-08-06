@@ -1,328 +1,711 @@
-<!doctype html>
-<!--[if lte IE 9]>
-<html class="lte-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!-->
-<html lang="en"> <!--<![endif]-->
+<!DOCTYPE html>
+
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta charset="utf-8"/>
+    <title>Laravel | EMS </title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Challenger One-Stop IT Solutins">
-    <meta name="author" content="Nyi Nyi Lwin">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>MyanCMS</title>
-    <!-- Icons -->
-    <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-    <link rel="shortcut icon" href="{{ asset('backend/img/favicons/favicon.png') }}">
 
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/global/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/global/plugins/simple-line-icons/simple-line-icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/global/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
 
-    <link rel="icon" type="image/png" href="{{ asset('backend/img/favicons/favicon-16x16.png') }}" sizes="16x16">
-    <link rel="icon" type="image/png" href="{{ asset('backend/img/favicons/favicon-32x32.png') }}" sizes="32x32">
-    <link rel="icon" type="image/png" href="{{ asset('backend/img/favicons/favicon-96x96.png') }}" sizes="96x96">
-    <link rel="icon" type="image/png" href="{{ asset('backend/img/favicons/favicon-160x160.png') }}" sizes="160x160">
-    <link rel="icon" type="image/png" href="{{ asset('backend/img/favicons/favicon-192x192.png') }}" sizes="192x192">
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    @yield('css')
+            <!-- END PAGE LEVEL PLUGINS -->
 
-    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('backend/img/favicons/apple-touch-icon-57x57.png') }}">
-    <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('backend/img/favicons/apple-touch-icon-60x60.png') }}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('backend/img/favicons/apple-touch-icon-72x72.png') }}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('backend/img/favicons/apple-touch-icon-76x76.png') }}">
-    <link rel="apple-touch-icon" sizes="114x114"
-          href="{{ asset('backend/img/favicons/apple-touch-icon-114x114.png') }}">
-    <link rel="apple-touch-icon" sizes="120x120"
-          href="{{ asset('backend/img/favicons/apple-touch-icon-120x120.png') }}">
-    <link rel="apple-touch-icon" sizes="144x144"
-          href="{{ asset('backend/img/favicons/apple-touch-icon-144x144.png') }}">
-    <link rel="apple-touch-icon" sizes="152x152"
-          href="{{ asset('backend/img/favicons/apple-touch-icon-152x152.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180"
-          href="{{ asset('backend/img/favicons/apple-touch-icon-180x180.png') }}">
-    <!-- END Icons -->
-    <!-- END Icons -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="{{ asset('assets/global/css/components-md.css') }}" rel="stylesheet" id="style_components"
+          type="text/css"/>
+    <link href="{{ asset('assets/global/css/plugins-md.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- END THEME GLOBAL STYLES -->
 
-
-    <!-- weather icons -->
-    <link rel="stylesheet" href="{{ asset('/backend/bower_components/weather-icons/css/weather-icons.min.css') }}"
-          media="all">
-    <!-- metrics graphics (charts) -->
-    <link rel="stylesheet" href="{{ asset('/backend/bower_components/metrics-graphics/dist/metricsgraphics.css') }}">
-    <!-- c3.js (charts) -->
-    <link rel="stylesheet" href="{{ asset('/backend/bower_components/c3js-chart/c3.min.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('/backend/bower_components/codemirror/lib/codemirror.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('/backend/bower_components/fullcalendar/dist/fullcalendar.min.css') }}">
-
-    <!-- uikit -->
-    <link rel="stylesheet" href="{{ asset('/backend/bower_components/uikit/css/uikit.almost-flat.min.css') }}"
-          media="all">
-    <link rel="stylesheet" href="{{ asset('front/css/ionicons.css') }}">
-    <!-- ionicons -->
-    <link rel="stylesheet" href="{{ asset('/backend/bower_components/Ionicons/css/ionicons.min.css') }}" media="all">
-
-    <!-- flag icons -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <link href="{{ asset('assets/layouts/layout4/css/layout.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/layouts/layout4/css/themes/light.css') }}" rel="stylesheet" type="text/css"
+          id="style_color"/>
+    <link href="{{ asset('assets/layouts/layout4/css/custom.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- END THEME LAYOUT STYLES -->
     <link rel="stylesheet" href="{{ asset('backend/icons/flags/flags.min.css') }}" media="all">
+    <link rel="shortcut icon" href="favicon.ico"/>
 
-    <!-- altair admin -->
-    <link rel="stylesheet" href="{{ asset('backend/css/main.min.css') }}" media="all">
+    @yield('qr')
 
-    <link rel="stylesheet" href="{{ asset('backend/skins/jtable/jtable.min.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('backend/skins/jquery-ui/material/jquery-ui.min.css') }}">
-
-    <!-- additional styles for plugins -->
-    <!-- kendo UI -->
-    <link rel="stylesheet"
-          href="{{ asset('/backend/bower_components/kendo-ui/styles/kendo.common-material.min.css') }}"/>
-
-    <link rel="stylesheet" href="{{ asset('/backend/bower_components/kendo-ui/styles/kendo.material.min.css') }}"/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic"
-          rel="stylesheet" type="text/css"/>
-    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-    <style>
-        body, a {
-            font-family: 'Raleway', sans-serif, Zawgyi-One, "Myanmar Text";
-        }
-    </style>
 </head>
-<body class="sidebar_main_open sidebar_main_swipe">
+<!-- END HEAD -->
 
-<!-- main header -->
+<body class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md">
+
+<!-- BEGIN HEADER -->
 @include('admin.layout.header')
-        <!-- main header end -->
+        <!-- END HEADER -->
 
-<!-- main sidebar -->
-@include('admin.layout.sidebar')
-        <!-- main sidebar end -->
+<!-- BEGIN HEADER & CONTENT DIVIDER -->
+<div class="clearfix"></div>
+<!-- END HEADER & CONTENT DIVIDER -->
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
 
-@yield('content')
+    <!-- BEGIN SIDEBAR -->
+    @include('admin.layout.sidebar')
+            <!-- END SIDEBAR -->
 
-@include('admin.layout.secondarysidebar')
-        <!-- google web fonts -->
-<script>
-    WebFontConfig = {
-        google: {
-            families: [
-                'Source+Code+Pro:400,700:latin',
-                'Roboto:400,300,500,700,400italic:latin'
-            ]
-        }
-    };
-    (function () {
-        var wf = document.createElement('script');
-        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-                '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-        wf.type = 'text/javascript';
-        wf.async = 'true';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(wf, s);
-    })();
-</script>
+    <!-- BEGIN CONTENT -->
+    @yield('content')
+            <!-- END CONTENT -->
 
-<script src="{{ asset('backend/js/common.min.js') }}"></script>
-<script src="{{ asset('backend/js/uikit_custom.min.js') }}"></script>
-<script src="{{ asset('backend/js/altair_admin_common.min.js') }}"></script>
-<script src="{{ asset('backend/js/pages/components_notifications.min.js') }}"></script>
-<script src="{{ asset('backend/js/pages/page_contact_list.min.js') }}"></script>
-<script src="{{ asset('backend/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('backend/bower_components/datatables-colvis/js/dataTables.colVis.js') }}"></script>
-<script src="{{ asset('backend/bower_components/datatables-tabletools/js/dataTables.tableTools.js') }}"></script>
-<script src="{{ asset('backend/js/custom/datatables_uikit.min.js') }}"></script>
-<script src="{{ asset('backend/js/pages/plugins_datatables.min.js') }}"></script>
-<script src="{{ asset('backend/bower_components/d3/d3.min.js') }}"></script>
-<script src="{{ asset('backend/bower_components/metrics-graphics/dist/metricsgraphics.min.js') }}"></script>
-<script src="{{ asset('backend/bower_components/chartist/dist/chartist.min.js') }}"></script>
-<script src="{{ asset('backend/bower_components/peity/jquery.peity.min.js') }}"></script>
-<script src="{{ asset('backend/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js') }}"></script>
-<script src="{{ asset('backend/bower_components/countUp.js/countUp.min.js') }}"></script>
-<script src="{{ asset('backend/bower_components/handlebars/handlebars.min.js') }}"></script>
-<script src="{{ asset('backend/js/custom/handlebars_helpers.min.js') }}"></script>
-<script src="{{ asset('backend/bower_components/clndr/src/clndr.js') }}"></script>
-<script src="{{ asset('backend/bower_components/fitvids/jquery.fitvids.js') }}"></script>
-<script src="{{ asset('backend/js/pages/dashboard.min.js') }}"></script>
-<script src="{{ asset('backend/bower_components/jquery-ui/jquery-ui.min.js') }}"></script>
-<script src="{{ asset('backend/bower_components/jtable/lib/jquery.jtable.min.js') }}"></script>
-<script src="{{ asset('backend/bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js') }}"></script>
-
-<script>
-    // load parsley config (altair_admin_common.js)
-    altair_forms.parsley_validation_config();
-    // load extra validators
-    altair_forms.parsley_extra_validators();
-
-</script>
-
-<script src="{{ asset('backend/bower_components/parsleyjs/dist/parsley.js') }}"></script>
-<script src="{{ asset('backend/js/pages/forms_advanced.js') }}"></script>
-<script src="{{ asset('backend/js/uikit_htmleditor_custom.js') }}"></script>
-<script src="{{ asset('backend/bower_components/ion.rangeslider/js/ion.rangeSlider.min.js') }}"></script>
-<script src="{{ asset('backend/js/pages/components_nestable.js') }}"></script>
-<script src="{{ asset('backend/js/pages/forms_wizard.min.js') }}"></script>
-<script src="{{ asset('backend/js/custom/wizard_steps.min.js') }}"></script>
-<script src="{{ asset('backend/js/kendoui_custom.min.js') }}"></script>
-<script src="{{ asset('backend/js/pages/kendoui.js') }}"></script>
-
-<script>
-    $(function () {
-        // enable hires images
-        altair_helpers.retina_images();
-        // fastClick (touch devices)
-        if (Modernizr.touch) {
-            FastClick.attach(document.body);
-        }
-    });
-</script>
-
-<div id="style_switcher">
-    <div id="style_switcher_toggle"><i class="material-icons">&#xE8B8;</i></div>
-    <div class="uk-margin-medium-bottom">
-        <h4 class="heading_c uk-margin-bottom">Colors</h4>
-        <ul class="switcher_app_themes" id="theme_switcher">
-            <li class="app_style_default active_theme" data-app-theme="">
-                <span class="app_color_main"></span>
-                <span class="app_color_accent"></span>
-            </li>
-            <li class="switcher_theme_a" data-app-theme="app_theme_a">
-                <span class="app_color_main"></span>
-                <span class="app_color_accent"></span>
-            </li>
-            <li class="switcher_theme_b" data-app-theme="app_theme_b">
-                <span class="app_color_main"></span>
-                <span class="app_color_accent"></span>
-            </li>
-            <li class="switcher_theme_c" data-app-theme="app_theme_c">
-                <span class="app_color_main"></span>
-                <span class="app_color_accent"></span>
-            </li>
-            <li class="switcher_theme_d" data-app-theme="app_theme_d">
-                <span class="app_color_main"></span>
-                <span class="app_color_accent"></span>
-            </li>
-            <li class="switcher_theme_e" data-app-theme="app_theme_e">
-                <span class="app_color_main"></span>
-                <span class="app_color_accent"></span>
-            </li>
-            <li class="switcher_theme_f" data-app-theme="app_theme_f">
-                <span class="app_color_main"></span>
-                <span class="app_color_accent"></span>
-            </li>
-            <li class="switcher_theme_g" data-app-theme="app_theme_g">
-                <span class="app_color_main"></span>
-                <span class="app_color_accent"></span>
-            </li>
-        </ul>
+    <!-- BEGIN QUICK SIDEBAR -->
+    <a href="javascript:;" class="page-quick-sidebar-toggler">
+        <i class="icon-login"></i>
+    </a>
+    <div class="page-quick-sidebar-wrapper" data-close-on-body-click="false">
+        <div class="page-quick-sidebar">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="javascript:;" data-target="#quick_sidebar_tab_1" data-toggle="tab"> Users
+                        <span class="badge badge-danger">2</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" data-target="#quick_sidebar_tab_2" data-toggle="tab"> Alerts
+                        <span class="badge badge-success">7</span>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> More
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                                <i class="icon-bell"></i> Alerts </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                                <i class="icon-info"></i> Notifications </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                                <i class="icon-speech"></i> Activities </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                                <i class="icon-settings"></i> Settings </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active page-quick-sidebar-chat" id="quick_sidebar_tab_1">
+                    <div class="page-quick-sidebar-chat-users" data-rail-color="#ddd"
+                         data-wrapper-class="page-quick-sidebar-list">
+                        <h3 class="list-heading">Staff</h3>
+                        <ul class="media-list list-items">
+                            <li class="media">
+                                <div class="media-status">
+                                    <span class="badge badge-success">8</span>
+                                </div>
+                                <img class="media-object" src="../assets/layouts/layout/img/avatar3.jpg" alt="...">
+                                <div class="media-body">
+                                    <h4 class="media-heading">Bob Nilson</h4>
+                                    <div class="media-heading-sub"> Project Manager</div>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <img class="media-object" src="../assets/layouts/layout/img/avatar1.jpg" alt="...">
+                                <div class="media-body">
+                                    <h4 class="media-heading">Nick Larson</h4>
+                                    <div class="media-heading-sub"> Art Director</div>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <div class="media-status">
+                                    <span class="badge badge-danger">3</span>
+                                </div>
+                                <img class="media-object" src="../assets/layouts/layout/img/avatar4.jpg" alt="...">
+                                <div class="media-body">
+                                    <h4 class="media-heading">Deon Hubert</h4>
+                                    <div class="media-heading-sub"> CTO</div>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <img class="media-object" src="../assets/layouts/layout/img/avatar2.jpg" alt="...">
+                                <div class="media-body">
+                                    <h4 class="media-heading">Ella Wong</h4>
+                                    <div class="media-heading-sub"> CEO</div>
+                                </div>
+                            </li>
+                        </ul>
+                        <h3 class="list-heading">Customers</h3>
+                        <ul class="media-list list-items">
+                            <li class="media">
+                                <div class="media-status">
+                                    <span class="badge badge-warning">2</span>
+                                </div>
+                                <img class="media-object" src="../assets/layouts/layout/img/avatar6.jpg" alt="...">
+                                <div class="media-body">
+                                    <h4 class="media-heading">Lara Kunis</h4>
+                                    <div class="media-heading-sub"> CEO, Loop Inc</div>
+                                    <div class="media-heading-small"> Last seen 03:10 AM</div>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <div class="media-status">
+                                    <span class="label label-sm label-success">new</span>
+                                </div>
+                                <img class="media-object" src="../assets/layouts/layout/img/avatar7.jpg" alt="...">
+                                <div class="media-body">
+                                    <h4 class="media-heading">Ernie Kyllonen</h4>
+                                    <div class="media-heading-sub"> Project Manager,
+                                        <br> SmartBizz PTL
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <img class="media-object" src="../assets/layouts/layout/img/avatar8.jpg" alt="...">
+                                <div class="media-body">
+                                    <h4 class="media-heading">Lisa Stone</h4>
+                                    <div class="media-heading-sub"> CTO, Keort Inc</div>
+                                    <div class="media-heading-small"> Last seen 13:10 PM</div>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <div class="media-status">
+                                    <span class="badge badge-success">7</span>
+                                </div>
+                                <img class="media-object" src="../assets/layouts/layout/img/avatar9.jpg" alt="...">
+                                <div class="media-body">
+                                    <h4 class="media-heading">Deon Portalatin</h4>
+                                    <div class="media-heading-sub"> CFO, H&D LTD</div>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <img class="media-object" src="../assets/layouts/layout/img/avatar10.jpg" alt="...">
+                                <div class="media-body">
+                                    <h4 class="media-heading">Irina Savikova</h4>
+                                    <div class="media-heading-sub"> CEO, Tizda Motors Inc</div>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <div class="media-status">
+                                    <span class="badge badge-danger">4</span>
+                                </div>
+                                <img class="media-object" src="../assets/layouts/layout/img/avatar11.jpg" alt="...">
+                                <div class="media-body">
+                                    <h4 class="media-heading">Maria Gomez</h4>
+                                    <div class="media-heading-sub"> Manager, Infomatic Inc</div>
+                                    <div class="media-heading-small"> Last seen 03:10 AM</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="page-quick-sidebar-item">
+                        <div class="page-quick-sidebar-chat-user">
+                            <div class="page-quick-sidebar-nav">
+                                <a href="javascript:;" class="page-quick-sidebar-back-to-list">
+                                    <i class="icon-arrow-left"></i>Back</a>
+                            </div>
+                            <div class="page-quick-sidebar-chat-user-messages">
+                                <div class="post out">
+                                    <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar3.jpg"/>
+                                    <div class="message">
+                                        <span class="arrow"></span>
+                                        <a href="javascript:;" class="name">Bob Nilson</a>
+                                        <span class="datetime">20:15</span>
+                                        <span class="body"> When could you send me the report ? </span>
+                                    </div>
+                                </div>
+                                <div class="post in">
+                                    <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar2.jpg"/>
+                                    <div class="message">
+                                        <span class="arrow"></span>
+                                        <a href="javascript:;" class="name">Ella Wong</a>
+                                        <span class="datetime">20:15</span>
+                                        <span class="body"> Its almost done. I will be sending it shortly </span>
+                                    </div>
+                                </div>
+                                <div class="post out">
+                                    <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar3.jpg"/>
+                                    <div class="message">
+                                        <span class="arrow"></span>
+                                        <a href="javascript:;" class="name">Bob Nilson</a>
+                                        <span class="datetime">20:15</span>
+                                        <span class="body"> Alright. Thanks! :) </span>
+                                    </div>
+                                </div>
+                                <div class="post in">
+                                    <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar2.jpg"/>
+                                    <div class="message">
+                                        <span class="arrow"></span>
+                                        <a href="javascript:;" class="name">Ella Wong</a>
+                                        <span class="datetime">20:16</span>
+                                        <span class="body"> You are most welcome. Sorry for the delay. </span>
+                                    </div>
+                                </div>
+                                <div class="post out">
+                                    <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar3.jpg"/>
+                                    <div class="message">
+                                        <span class="arrow"></span>
+                                        <a href="javascript:;" class="name">Bob Nilson</a>
+                                        <span class="datetime">20:17</span>
+                                        <span class="body"> No probs. Just take your time :) </span>
+                                    </div>
+                                </div>
+                                <div class="post in">
+                                    <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar2.jpg"/>
+                                    <div class="message">
+                                        <span class="arrow"></span>
+                                        <a href="javascript:;" class="name">Ella Wong</a>
+                                        <span class="datetime">20:40</span>
+                                        <span class="body"> Alright. I just emailed it to you. </span>
+                                    </div>
+                                </div>
+                                <div class="post out">
+                                    <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar3.jpg"/>
+                                    <div class="message">
+                                        <span class="arrow"></span>
+                                        <a href="javascript:;" class="name">Bob Nilson</a>
+                                        <span class="datetime">20:17</span>
+                                        <span class="body"> Great! Thanks. Will check it right away. </span>
+                                    </div>
+                                </div>
+                                <div class="post in">
+                                    <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar2.jpg"/>
+                                    <div class="message">
+                                        <span class="arrow"></span>
+                                        <a href="javascript:;" class="name">Ella Wong</a>
+                                        <span class="datetime">20:40</span>
+                                        <span class="body"> Please let me know if you have any comment. </span>
+                                    </div>
+                                </div>
+                                <div class="post out">
+                                    <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar3.jpg"/>
+                                    <div class="message">
+                                        <span class="arrow"></span>
+                                        <a href="javascript:;" class="name">Bob Nilson</a>
+                                        <span class="datetime">20:17</span>
+                                        <span class="body"> Sure. I will check and buzz you if anything needs to be corrected. </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="page-quick-sidebar-chat-user-form">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Type a message here...">
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn green">
+                                            <i class="icon-paper-clip"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane page-quick-sidebar-alerts" id="quick_sidebar_tab_2">
+                    <div class="page-quick-sidebar-alerts-list">
+                        <h3 class="list-heading">General</h3>
+                        <ul class="feeds list-items">
+                            <li>
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-info">
+                                                <i class="fa fa-check"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> You have 4 pending tasks.
+                                                        <span class="label label-sm label-warning "> Take action
+                                                            <i class="fa fa-share"></i>
+                                                        </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> Just now</div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="col1">
+                                        <div class="cont">
+                                            <div class="cont-col1">
+                                                <div class="label label-sm label-success">
+                                                    <i class="fa fa-bar-chart-o"></i>
+                                                </div>
+                                            </div>
+                                            <div class="cont-col2">
+                                                <div class="desc"> Finance Report for year 2013 has been released.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col2">
+                                        <div class="date"> 20 mins</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-danger">
+                                                <i class="fa fa-user"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> You have 5 pending membership that requires a quick
+                                                review.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 24 mins</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-info">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> New order received with
+                                                <span class="label label-sm label-success"> Reference Number: DR23923 </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 30 mins</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-success">
+                                                <i class="fa fa-user"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> You have 5 pending membership that requires a quick
+                                                review.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 24 mins</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-info">
+                                                <i class="fa fa-bell-o"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> Web server hardware needs to be upgraded.
+                                                <span class="label label-sm label-warning"> Overdue </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 2 hours</div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="col1">
+                                        <div class="cont">
+                                            <div class="cont-col1">
+                                                <div class="label label-sm label-default">
+                                                    <i class="fa fa-briefcase"></i>
+                                                </div>
+                                            </div>
+                                            <div class="cont-col2">
+                                                <div class="desc"> IPO Report for year 2013 has been released.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col2">
+                                        <div class="date"> 20 mins</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <h3 class="list-heading">System</h3>
+                        <ul class="feeds list-items">
+                            <li>
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-info">
+                                                <i class="fa fa-check"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> You have 4 pending tasks.
+                                                        <span class="label label-sm label-warning "> Take action
+                                                            <i class="fa fa-share"></i>
+                                                        </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> Just now</div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="col1">
+                                        <div class="cont">
+                                            <div class="cont-col1">
+                                                <div class="label label-sm label-danger">
+                                                    <i class="fa fa-bar-chart-o"></i>
+                                                </div>
+                                            </div>
+                                            <div class="cont-col2">
+                                                <div class="desc"> Finance Report for year 2013 has been released.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col2">
+                                        <div class="date"> 20 mins</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-default">
+                                                <i class="fa fa-user"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> You have 5 pending membership that requires a quick
+                                                review.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 24 mins</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-info">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> New order received with
+                                                <span class="label label-sm label-success"> Reference Number: DR23923 </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 30 mins</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-success">
+                                                <i class="fa fa-user"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> You have 5 pending membership that requires a quick
+                                                review.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 24 mins</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-warning">
+                                                <i class="fa fa-bell-o"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> Web server hardware needs to be upgraded.
+                                                <span class="label label-sm label-default "> Overdue </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 2 hours</div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="col1">
+                                        <div class="cont">
+                                            <div class="cont-col1">
+                                                <div class="label label-sm label-info">
+                                                    <i class="fa fa-briefcase"></i>
+                                                </div>
+                                            </div>
+                                            <div class="cont-col2">
+                                                <div class="desc"> IPO Report for year 2013 has been released.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col2">
+                                        <div class="date"> 20 mins</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-pane page-quick-sidebar-settings" id="quick_sidebar_tab_3">
+                    <div class="page-quick-sidebar-settings-list">
+                        <h3 class="list-heading">General Settings</h3>
+                        <ul class="list-items borderless">
+                            <li> Enable Notifications
+                                <input type="checkbox" class="make-switch" checked data-size="small"
+                                       data-on-color="success" data-on-text="ON" data-off-color="default"
+                                       data-off-text="OFF"></li>
+                            <li> Allow Tracking
+                                <input type="checkbox" class="make-switch" data-size="small" data-on-color="info"
+                                       data-on-text="ON" data-off-color="default" data-off-text="OFF"></li>
+                            <li> Log Errors
+                                <input type="checkbox" class="make-switch" checked data-size="small"
+                                       data-on-color="danger" data-on-text="ON" data-off-color="default"
+                                       data-off-text="OFF"></li>
+                            <li> Auto Sumbit Issues
+                                <input type="checkbox" class="make-switch" data-size="small" data-on-color="warning"
+                                       data-on-text="ON" data-off-color="default" data-off-text="OFF"></li>
+                            <li> Enable SMS Alerts
+                                <input type="checkbox" class="make-switch" checked data-size="small"
+                                       data-on-color="success" data-on-text="ON" data-off-color="default"
+                                       data-off-text="OFF"></li>
+                        </ul>
+                        <h3 class="list-heading">System Settings</h3>
+                        <ul class="list-items borderless">
+                            <li> Security Level
+                                <select class="form-control input-inline input-sm input-small">
+                                    <option value="1">Normal</option>
+                                    <option value="2" selected>Medium</option>
+                                    <option value="e">High</option>
+                                </select>
+                            </li>
+                            <li> Failed Email Attempts
+                                <input class="form-control input-inline input-sm input-small" value="5"/></li>
+                            <li> Secondary SMTP Port
+                                <input class="form-control input-inline input-sm input-small" value="3560"/></li>
+                            <li> Notify On System Error
+                                <input type="checkbox" class="make-switch" checked data-size="small"
+                                       data-on-color="danger" data-on-text="ON" data-off-color="default"
+                                       data-off-text="OFF"></li>
+                            <li> Notify On SMTP Error
+                                <input type="checkbox" class="make-switch" checked data-size="small"
+                                       data-on-color="warning" data-on-text="ON" data-off-color="default"
+                                       data-off-text="OFF"></li>
+                        </ul>
+                        <div class="inner-content">
+                            <button class="btn btn-success">
+                                <i class="icon-settings"></i> Save Changes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="uk-visible-large">
-        <h4 class="heading_c">Change Language</h4>
-        @foreach(SiteHelper::langOption() as $lang)
-            <p>
-                <a href="{{ URL::to('/lang/'.$lang['folder'])}}" style="background-color: transparent;color: #000;  text-decoration: none;">
-                    <i class="item-icon @if($lang['folder'] == 'mm' || $lang['folder'] == 'uni' )flag-MM @else flag-GB @endif"></i>
-                    <label for="#" class="inline-label">{{  $lang['name'] }}</label>
-                </a>
-            </p>
-        @endforeach
+    <!-- END QUICK SIDEBAR -->
+</div>
+<!-- END CONTAINER -->
+
+<!-- BEGIN FOOTER -->
+<div class="page-footer">
+    <div class="page-footer-inner"> 2014 &copy; Metronic by keenthemes.
+        <a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes"
+           title="Purchase Metronic just for 27$ and get lifetime updates for free" target="_blank">Purchase
+            Metronic!</a>
+    </div>
+    <div class="scroll-to-top">
+        <i class="icon-arrow-up"></i>
     </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sugar/1.4.1/sugar.min.js"></script>
-<script src="{{ asset('backend/js/jquerymy-1.2.4.min.js') }}"></script>
-<script>
-    $(function () {
-        var $switcher = $('#style_switcher'),
-                $switcher_toggle = $('#style_switcher_toggle'),
-                $theme_switcher = $('#theme_switcher'),
-                $mini_sidebar_toggle = $('#style_sidebar_mini'),
-                $boxed_layout_toggle = $('#style_layout_boxed'),
-                $body = $('body');
+<!-- END FOOTER -->
+
+<!--[if lt IE 9]>
+<script src="{{ asset('assets/global/plugins/respond.min.js') }}"></script>
+<script src="{{ asset('assets/global/plugins/excanvas.min.js') }}"></script>
+<![endif]-->
+
+<!-- BEGIN CORE PLUGINS -->
+<script src="{{ asset('assets/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/global/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/global/plugins/js.cookie.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js') }}"
+        type="text/javascript"></script>
+<script src="{{ asset('assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}"
+        type="text/javascript"></script>
+<script src="{{ asset('assets/global/plugins/jquery.blockui.min.js" type="text/javascript') }}"></script>
+<script src="{{ asset('assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"
+        type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+@yield('first_page_lvl_script')
+        <!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN THEME GLOBAL SCRIPTS -->
+<script src="{{ asset('assets/global/scripts/app.min.js') }}" type="text/javascript"></script>
+<!-- END THEME GLOBAL SCRIPTS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+@yield('second_page_lvl_script')
+        <!-- END PAGE LEVEL SCRIPTS -->
+
+@yield('scripts')
+<!-- BEGIN THEME LAYOUT SCRIPTS -->
+<script src="{{ asset('assets/layouts/layout4/scripts/layout.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/layouts/layout4/scripts/demo.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/layouts/global/scripts/quick-sidebar.min.js') }}" type="text/javascript"></script>
+<!-- END THEME LAYOUT SCRIPTS -->
 
 
-        $switcher_toggle.click(function (e) {
-            e.preventDefault();
-            $switcher.toggleClass('switcher_active');
-        });
 
-        $theme_switcher.children('li').click(function (e) {
-            e.preventDefault();
-            var $this = $(this),
-                    this_theme = $this.attr('data-app-theme');
-
-            $theme_switcher.children('li').removeClass('active_theme');
-            $(this).addClass('active_theme');
-            $body
-                    .removeClass('app_theme_a app_theme_b app_theme_c app_theme_d app_theme_e app_theme_f app_theme_g')
-                    .addClass(this_theme);
-
-            if (this_theme == '') {
-                localStorage.removeItem('altair_theme');
-            } else {
-                localStorage.setItem("altair_theme", this_theme);
-            }
-
-        });
-
-        // hide style switcher
-        $document.on('click keyup', function (e) {
-            if ($switcher.hasClass('switcher_active')) {
-                if (
-                        ( !$(e.target).closest($switcher).length )
-                        || ( e.keyCode == 27 )
-                ) {
-                    $switcher.removeClass('switcher_active');
-                }
-            }
-        });
-
-        // get theme from local storage
-        if (localStorage.getItem("altair_theme") !== null) {
-            $theme_switcher.children('li[data-app-theme=' + localStorage.getItem("altair_theme") + ']').click();
-        }
-
-
-        // toggle mini sidebar
-
-        // change input's state to checked if mini sidebar is active
-        if ((localStorage.getItem("altair_sidebar_mini") !== null && localStorage.getItem("altair_sidebar_mini") == '1') || $body.hasClass('sidebar_mini')) {
-            $mini_sidebar_toggle.iCheck('check');
-        }
-
-        $mini_sidebar_toggle
-                .on('ifChecked', function (event) {
-                    $switcher.removeClass('switcher_active');
-                    localStorage.setItem("altair_sidebar_mini", '1');
-                    location.reload(true);
-                })
-                .on('ifUnchecked', function (event) {
-                    $switcher.removeClass('switcher_active');
-                    localStorage.removeItem('altair_sidebar_mini');
-                    location.reload(true);
-                });
-
-
-        // toggle boxed layout
-
-        // change input's state to checked if mini sidebar is active
-        if ((localStorage.getItem("altair_layout") !== null && localStorage.getItem("altair_layout") == 'boxed') || $body.hasClass('boxed_layout')) {
-            $boxed_layout_toggle.iCheck('check');
-            $body.addClass('boxed_layout');
-            $(window).resize();
-        }
-
-        // toggle mini sidebar
-        $boxed_layout_toggle
-                .on('ifChecked', function (event) {
-                    $switcher.removeClass('switcher_active');
-                    localStorage.setItem("altair_layout", 'boxed');
-                    location.reload(true);
-                })
-                .on('ifUnchecked', function (event) {
-                    $switcher.removeClass('switcher_active');
-                    localStorage.removeItem('altair_layout');
-                    location.reload(true);
-                });
-
-
-    });
-</script>
 <script>
     $.ajaxSetup({
         headers: {
@@ -331,5 +714,7 @@
     });
 </script>
 
+
 </body>
+
 </html>

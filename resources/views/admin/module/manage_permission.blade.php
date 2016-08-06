@@ -1,174 +1,275 @@
 @extends('admin.layout.app')
+
+@section('css')
+    <link href="{{ asset('assets/global/plugins/bootstrap-toastr/toastr.min.css') }}" rel="stylesheet" type="text/css"/>
+@endsection
+
 @section('content')
-    <div id="top_bar">
-        <div class="md-top-bar">
-            <div class="uk-width-large-10-10 uk-container-center">
-                <?php $module_list = \App\Models\Module::all() ?>
-                <ul class="top_bar_nav" id="snippets_grid_filter">
-                    @foreach($module_list as $module_name )
-                    <li>
-                        <a href="{{ url('module/manage_permission').'/'.$module_name->id }}">{{ $module_name->module_title }}</a>
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div id="page_content">
-        <div id="page_content_inner">
-            <h3 class="heading_a">Module Permission</h3>
-            <div class="uk-grid">
-
-                <div class="uk-width-large-3-10">
-                    <div class="md-card">
-                        <div class="md-list-outside-wrapper">
-                            <ul class="md-list md-list-addon md-list-outside" id="chat_user_list"
-                                data-uk-tab="{connect:'#tabs_7'}">
-                                @foreach($users as $user)
-                                    <li onclick="get_permission({{ $user->user_id }})">
-                                        <div class="md-list-addon-element">
-                                            <img class="md-user-image md-list-addon-avatar"
-                                                 src="http://www.gravatar.com/avatar/{{ md5(strtolower(trim( $user->email ))) }}/?d=wavatar&s=100&r=g"
-                                                 alt=""/>
-                                        </div>
-                                        <div class="md-list-content">
-                                            <div class="md-list-action-placeholder"></div>
-                                            <span class="md-list-heading">{{ $user->first_name }}  {{ $user->last_name }}</span>
-                                            <span class="uk-text-small uk-text-muted uk-text-truncate">{{ $user->name }}</span>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
+    <div class="page-content-wrapper">
+        <!-- BEGIN CONTENT BODY -->
+        <div class="page-content">
+            <!-- BEGIN PAGE HEAD-->
+            <div class="page-head">
+                <!-- BEGIN PAGE TITLE -->
+                <div class="page-title">
+                    <h1>Module Management
+                        <small>user permission</small>
+                    </h1>
                 </div>
-
-                <div class="uk-width-large-7-10">
-                    <div class="md-card md-card-single">
-                        <div class="md-card-toolbar">
-                            <h3 class="md-card-toolbar-heading-text large">
-                                <span class="uk-text-muted"><i class="material-icons">accessibility</i> Permission Editor : </span><a
-                                        href="#">{{ $module->module_title }}</a>
-                            </h3>
-                        </div>
-                        <div class="md-card-content padding-reset">
-                            <div class="" id="data_content">
-                                <div class="md-card-content">
-                                    <?php $data = \App\Models\Module::get_permission_by_module($module->id) ?>
-
-                                    <ul id="tabs_7" class="uk-switcher uk-margin-small-top">
-                                        @foreach($data as $key=>$permission)
-                                            <li class="uk-active" aria-hidden="false">
-                                                <?php $user = \App\User::get_user_role($key) ?>
-                                                <ul class="md-list md-list-addon md-list-outside" id="chat_user_list">
-                                                    <li>
-                                                        <div class="md-list-addon-element">
-                                                            <img class="md-user-image md-list-addon-avatar"
-                                                                 src="http://www.gravatar.com/avatar/{{ md5(strtolower(trim( $user->email ))) }}/?d=wavatar&s=100&r=g"
-                                                                 alt=""/>
-                                                        </div>
-                                                        <div class="md-list-content">
-                                                            <div class="md-list-action-placeholder"></div>
-                                                            <span class="md-list-heading">{{ $user->first_name }}  {{ $user->last_name }}</span>
-                                                            <span class="uk-text-small uk-text-muted uk-text-truncate">{{ $user->name }}</span>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                                <form id="permission_form{{ $key }}">
-                                                    <div class="uk-grid">
-                                                        <div class="uk-width-medium-3-5 uk-container-center"
-                                                             style="padding: 10px 0px 0px 60px;">
-                                                    <span class="icheck-inline">
-                                                        <input type="checkbox" @if($permission['create']) checked
-                                                               @endif name="create" value="1" id="create{{ $key }}"
-                                                               data-md-icheck/>
-                                                        <label for="create{{ $key }}"
-                                                               class="inline-label">Create</label>
-                                                    </span>
-                                                    <span class="icheck-inline">
-                                                        <input type="checkbox" @if($permission['delete']) checked
-                                                               @endif name="delete" value="1" id="delete{{ $key }}"
-                                                               data-md-icheck/>
-                                                        <label for="delete{{ $key }}"
-                                                               class="inline-label">Delete</label>
-                                                    </span>
-                                                    <span class="icheck-inline">
-                                                        <input type="checkbox" @if($permission['view']) checked
-                                                               @endif name="view" value="1" id="view{{ $key }}"
-                                                               data-md-icheck/>
-                                                        <label for="view{{ $key }}" class="inline-label">View</label>
-                                                    </span>
-                                                    <span class="icheck-inline">
-                                                        <input type="checkbox" @if($permission['update']) checked
-                                                               @endif name="update" value="1"id="update{{ $key }}"
-                                                               data-md-icheck/>
-                                                        <label for="update{{ $key }}"
-                                                               class="inline-label">Update</label>
-                                                    </span>
-                                                        </div>
-                                                        <div class="uk-width-medium-2-5 uk-container-center">
-                                                            <a href="#"
-                                                               class="md-btn md-btn-small md-btn-danger" onclick="save_permission({{ $key }})">
-                                                                Save Permission</a>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </li>
-                                        @endforeach
+                <!-- END PAGE TITLE -->
+                <!-- BEGIN PAGE TOOLBAR -->
+                <div class="page-toolbar">
+                    <!-- BEGIN THEME PANEL -->
+                    <div class="btn-group btn-theme-panel">
+                        <a href="javascript:;" class="btn dropdown-toggle" data-toggle="dropdown">
+                            <i class="icon-settings"></i>
+                        </a>
+                        <div class="dropdown-menu theme-panel pull-right dropdown-custom hold-on-click">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <h3>THEME</h3>
+                                    <ul class="theme-colors">
+                                        <li class="theme-color theme-color-default" data-theme="default">
+                                            <span class="theme-color-view"></span>
+                                            <span class="theme-color-name">Dark Header</span>
+                                        </li>
+                                        <li class="theme-color theme-color-light active" data-theme="light">
+                                            <span class="theme-color-view"></span>
+                                            <span class="theme-color-name">Light Header</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-12 seperator">
+                                    <h3>LAYOUT</h3>
+                                    <ul class="theme-settings">
+                                        <li> Layout
+                                            <select class="layout-option form-control input-small input-sm">
+                                                <option value="fluid" selected="selected">Fluid</option>
+                                                <option value="boxed">Boxed</option>
+                                            </select>
+                                        </li>
+                                        <li> Header
+                                            <select class="page-header-option form-control input-small input-sm">
+                                                <option value="fixed" selected="selected">Fixed</option>
+                                                <option value="default">Default</option>
+                                            </select>
+                                        </li>
+                                        <li> Top Dropdowns
+                                            <select class="page-header-top-dropdown-style-option form-control input-small input-sm">
+                                                <option value="light">Light</option>
+                                                <option value="dark" selected="selected">Dark</option>
+                                            </select>
+                                        </li>
+                                        <li> Sidebar Mode
+                                            <select class="sidebar-option form-control input-small input-sm">
+                                                <option value="fixed">Fixed</option>
+                                                <option value="default" selected="selected">Default</option>
+                                            </select>
+                                        </li>
+                                        <li> Sidebar Menu
+                                            <select class="sidebar-menu-option form-control input-small input-sm">
+                                                <option value="accordion" selected="selected">Accordion</option>
+                                                <option value="hover">Hover</option>
+                                            </select>
+                                        </li>
+                                        <li> Sidebar Position
+                                            <select class="sidebar-pos-option form-control input-small input-sm">
+                                                <option value="left" selected="selected">Left</option>
+                                                <option value="right">Right</option>
+                                            </select>
+                                        </li>
+                                        <li> Footer
+                                            <select class="page-footer-option form-control input-small input-sm">
+                                                <option value="fixed">Fixed</option>
+                                                <option value="default" selected="selected">Default</option>
+                                            </select>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- END THEME PANEL -->
                 </div>
-
+                <!-- END PAGE TOOLBAR -->
             </div>
+            <!-- END PAGE HEAD-->
+            <!-- BEGIN PAGE BREADCRUMB -->
+            <ul class="page-breadcrumb breadcrumb">
+                <li>
+                    <a href="#">Home</a>
+                    <i class="fa fa-circle"></i>
+                </li>
+                <li>
+                    <a href="{{ url('module') }}">Module</a>
+                    <i class="fa fa-circle"></i>
+                </li>
+                <li>
+                    <span class="active">Manage Permission</span>
+                </li>
+            </ul>
+            <!-- END PAGE BREADCRUMB -->
+            <!-- BEGIN PAGE BASE CONTENT -->
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                    <div class="portlet box blue">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-cogs"></i>Permission Editor : {{ $module->module_title }}
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="row">
 
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <ul class="nav nav-tabs tabs-left">
+                                        @foreach($users as $key=>$user)
+
+                                            <li @if($key == 0) class="active" @endif>
+                                                <a href="#tab{{ $user->user_id }}" data-toggle="tab">
+                                                    <div class="mt-element-list">
+                                                        <div class="mt-list-head list-todo dark">
+                                                            <div class="list-head-title-container">
+                                                                <h3 class="list-title">{{ $user->first_name }}  {{ $user->last_name }}</h3>
+                                                                <div class="list-head-count">
+                                                                    <div class="list-head-count-item">
+                                                                        <i class="fa fa-check"></i> {{ $user->name }}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="tab-content">
+                                        <?php $data = \App\Models\Module::get_permission_by_module($module->id) ?>
+                                            @foreach($data as $key=>$permission)
+                                                <div @if($key == 1) class="tab-pane active" @else class="tab-pane" @endif id="tab{{ $key }}">
+                                                    <?php $user = \App\User::get_user_role($key) ?>
+
+                                                    <h3>Manage Permission for {{ $user->first_name }} {{ $user->last_name }}</h3>
+                                                    <form id="permission_form{{ $key }}">
+
+                                                        <div class="form-group form-md-checkboxes">
+                                                            <div class="md-checkbox-inline">
+                                                                <div class="md-checkbox">
+                                                                    <input type="checkbox" @if($permission['create']) checked
+                                                                           @endif name="create" value="1" id="create{{ $key }}" class="md-check">
+                                                                    <label for="create{{ $key }}">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span> Create </label>
+                                                                </div>
+                                                                <div class="md-checkbox">
+                                                                    <input type="checkbox"  @if($permission['delete']) checked
+                                                                           @endif name="delete" value="1" id="delete{{ $key }}">
+                                                                    <label for="delete{{ $key }}">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span> Delete </label>
+                                                                </div>
+
+                                                                <div class="md-checkbox">
+                                                                    <input type="checkbox" @if($permission['view']) checked
+                                                                           @endif name="view" value="1" id="view{{ $key }}">
+                                                                    <label for="view{{ $key }}">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span> View </label>
+                                                                </div>
+
+                                                                <div class="md-checkbox">
+                                                                    <input type="checkbox" @if($permission['update']) checked
+                                                                           @endif name="update" value="1" id="update{{ $key }}">
+                                                                    <label for="update{{ $key }}">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span> Update </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+
+                                                    <div class="row" style="padding : 15px">
+                                                        <a href="#"
+                                                           class="btn red" onclick="save_permission({{ $key }})">
+                                                            Save Permission</a>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END EXAMPLE TABLE PORTLET-->
+                </div>
+            </div>
+            <!-- END PAGE BASE CONTENT -->
         </div>
+        <!-- END CONTENT BODY -->
     </div>
-
     <script>
         function save_permission(id) {
-            altair_helpers.content_preloader_show();
 
-            $contact_data = $('#permission_form'+ id );
-            var form_serialized = JSON.stringify($contact_data.serializeObject(), null, 2);
-//            UIkit.modal.alert('<p>Wizard data:</p><pre>' + $contact_data.serializeObject().create + '</pre>');
+            $contact_data = $('#permission_form' + id);
 
             $.ajax({
                 type: 'post',
-                url: '{{ URL::to("module/save_user_permission") }}' + '/' + id + '/{{ $module->id }}' ,
-                data: {
-                    create  : $contact_data.serializeObject().create,
-                    delete  : $contact_data.serializeObject().delete,
-                    view    : $contact_data.serializeObject().view,
-                    update  : $contact_data.serializeObject().update
+                url: '{{ url("module/save_user_permission") }}' + '/' + id + '/{{ $module->id }}',
+                data: $contact_data.serialize() ,
+                success: function (msg) {
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "positionClass": "toast-top-right",
+                        "onclick": null,
+                        "showDuration": "1000",
+                        "hideDuration": "1000",
+                        "timeOut": "3000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    },
+                            toastr.success("Edit Complete !", "Event Testimonal");
                 },
-                success: function( msg ) {
-                    UIkit.notify({
-                        message: 'Successfully Save Permission.',
-                        status: 'success',
-                        timeout: 2000,
-                        pos: 'top-right',
-                        onClose: function() {
-                            altair_helpers.content_preloader_hide();
-                        }
-                    });
-                },
-                error: function( data ) {
-                    UIkit.notify({
-                        message: 'Something went wrong.',
-                        status: 'danger',
-                        timeout: 3000,
-                        pos: 'top-right',
-                        onClose: function() {
-                            altair_helpers.content_preloader_hide();
-                        }
-                    });
+                error: function (data) {
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "positionClass": "toast-top-right",
+                        "onclick": null,
+                        "showDuration": "1000",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                            toastr.error("Delete Complete !", "Event Testimonal");
                 }
             });
         }
 
     </script>
+
+@endsection
+@section('first_page_lvl_script')
+    <script src="{{ asset('assets/global/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js') }}"
+            type="text/javascript"></script>
+    <script src="{{ asset('assets/global/plugins/bootstrap-toastr/toastr.min.js') }}" type="text/javascript"></script>
+@endsection
+
+@section('second_page_lvl_script')
+
 @endsection

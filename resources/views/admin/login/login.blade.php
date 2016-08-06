@@ -1,108 +1,155 @@
-<!doctype html>
-<!--[if lte IE 9]> <html class="lte-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
+<!DOCTYPE html>
+<!--
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.6
+Version: 4.5.6
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Dribbble: www.dribbble.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+Renew Support: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta charset="utf-8" />
+    <title>Metronic | User Login 5</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="MyanCMS">
-    <meta name="author" content="Nyi Nyi Lwin">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link href="../assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="../assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
+    <link href="../assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <link href="../assets/pages/css/login-5.min.css" rel="stylesheet" type="text/css" />
+    <!-- END PAGE LEVEL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <!-- END THEME LAYOUT STYLES -->
+    <link rel="shortcut icon" href="favicon.ico" /> </head>
+<!-- END HEAD -->
 
-    <title>MyanCMS</title>
-    <!-- Icons -->
-    <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-    <link rel="shortcut icon" href="{{ asset('backend/img/favicons/favicon.png') }}">
+<body class=" login">
+<!-- BEGIN : LOGIN PAGE 5-1 -->
+<div class="user-login-5">
+    <div class="row bs-reset">
+        <div class="col-md-6 bs-reset">
+            <div class="login-bg" style="background-image:url(../assets/pages/img/login/bg1.jpg)">
+                <img class="login-logo" src="{{ url('assets/pages/img/login/logo.png') }}" /> </div>
+        </div>
+        <div class="col-md-6 login-container bs-reset">
+            <div class="login-content">
+                <h1>LaraEvent Admin Login</h1>
+                <p> Lorem ipsum dolor sit amet, coectetuer adipiscing elit sed diam nonummy et nibh euismod aliquam erat volutpat. Lorem ipsum dolor sit amet, coectetuer adipiscing. </p>
 
+                <form  action="{{ url('letmein') }}"  class="login-form" method="post">
+                    {!! csrf_field() !!}
+                    <div class="alert alert-danger display-hide">
+                        <button class="close" data-close="alert"></button>
+                        <span>Enter any username and password. </span>
+                    </div>
+                    @if(\Session::has('status'))
+                        <div class="alert alert-danger">
+                            <button class="close" data-close="alert"></button>
+                            <span>{{ \Session::get('status') }}</span>
+                        </div>
+                    @endif
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <input class="form-control form-control-solid placeholder-no-fix form-group" type="text" autocomplete="off" placeholder="Username" name="email" required/> </div>
+                        <div class="col-xs-6">
+                            <input class="form-control form-control-solid placeholder-no-fix form-group" type="password" autocomplete="off" placeholder="Password" name="password" required/> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
 
-    <link rel="icon" type="image/png" href="{{ asset('backend/img/favicons/favicon-16x16.png') }}" sizes="16x16">
-    <link rel="icon" type="image/png" href="{{ asset('backend/img/favicons/favicon-32x32.png') }}" sizes="32x32">
-    <link rel="icon" type="image/png" href="{{ asset('backend/img/favicons/favicon-96x96.png') }}" sizes="96x96">
-    <link rel="icon" type="image/png" href="{{ asset('backend/img/favicons/favicon-160x160.png') }}" sizes="160x160">
-    <link rel="icon" type="image/png" href="{{ asset('backend/img/favicons/favicon-192x192.png') }}" sizes="192x192">
+                        </div>
+                        <div class="col-sm-8 text-right">
+                            <button class="btn green" type="submit">Sign In</button>
+                        </div>
+                    </div>
+                </form>
 
-    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('backend/img/favicons/apple-touch-icon-57x57.png') }}">
-    <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('backend/img/favicons/apple-touch-icon-60x60.png') }}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('backend/img/favicons/apple-touch-icon-72x72.png') }}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('backend/img/favicons/apple-touch-icon-76x76.png') }}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('backend/img/favicons/apple-touch-icon-114x114.png') }}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('backend/img/favicons/apple-touch-icon-120x120.png') }}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('backend/img/favicons/apple-touch-icon-144x144.png') }}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('backend/img/favicons/apple-touch-icon-152x152.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('backend/img/favicons/apple-touch-icon-180x180.png') }}">
-    <!-- END Icons -->
-
-
-    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
-    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
-    <!-- uikit -->
-    <link rel="stylesheet" href="{{ asset('backend/bower_components/uikit/css/uikit.almost-flat.min.css') }}"/>
-
-    <!-- altair admin login page -->
-    <link rel="stylesheet" href="{{ asset('backend/css/login_page.min.css') }}" />
-
-    <!-- flag icons -->
-    <link rel="stylesheet" href="{{ asset('backend/icons/flags/flags.min.css') }}" media="all">
-
-    <!-- altair admin -->
-    <link rel="stylesheet" href="{{ asset('backend/css/main.min.css') }}" media="all">
-
-    <style>
-        body{
-            font-family: 'Raleway', sans-serif;
-        }
-        
-        .login_page{
-            background: transparent url("img/bg.jpg") no-repeat scroll center center / cover;
-            height: 100%;
-            position: relative;
-        }
-    </style>
-
-</head>
-<body class="login_page">
-<div id="page_content">
-    <div id="page_content_inner">
-        <div class="login_page_wrapper">
-    <div class="md-card" id="login_card">
-        <div class="md-card-content large-padding" id="login_form">
-            <div class="login_heading">
-                <div class="user_avatar"></div>
             </div>
-            @if(\Session::has('status'))
-                <div class="uk-alert uk-alert-danger" data-uk-alert="">
-                    <a href="#" class="uk-alert-close uk-close"></a>
-                    {{ \Session::get('status') }}
+            <div class="login-footer">
+                <div class="row bs-reset">
+                    <div class="col-xs-5 bs-reset">
+                        <ul class="login-social">
+                            <li>
+                                <a href="javascript:;">
+                                    <i class="icon-social-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <i class="icon-social-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <i class="icon-social-dribbble"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-7 bs-reset">
+                        <div class="login-copyright text-right">
+                            <p>Copyright &copy; ChallengerWebSolutions</p>
+                        </div>
+                    </div>
                 </div>
-            @endif
-            <form action="{{ url('letmein') }}" method="post" id="form_validation" class="uk-form-stacked">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <div class="uk-form-row">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" data-parsley-trigger="change" required  class="md-input" />
-                </div>
-                <div class="uk-form-row">
-                    <label for="login_username">Password</label>
-                    <input class="md-input" type="password" id="login_username" name="password" required />
-                </div>
-                <div class="uk-margin-medium-top">
-                    <button class="md-btn md-btn-primary md-btn-block md-btn-large">Sign In</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
-    </div>
-</div>
-<!-- common functions -->
-<script src="{{ asset('backend/js/common.min.js') }}"></script>
-<!-- altair core functions -->
-<script src="{{ asset('backend/js/altair_admin_common.min.js') }}"></script>
-
-<!-- altair login page functions -->
-<script src="{{ asset('backend/js/pages/login_page.min.js') }}"></script>
-
-<script src="{{ asset('backend/js/uikit_custom.min.js') }}"></script>
-
-
+<!-- END : LOGIN PAGE 5-1 -->
+<!--[if lt IE 9]>
+<script src="../assets/global/plugins/respond.min.js"></script>
+<script src="../assets/global/plugins/excanvas.min.js"></script>
+<![endif]-->
+<!-- BEGIN CORE PLUGINS -->
+<script src="../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="../assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN THEME GLOBAL SCRIPTS -->
+<script src="../assets/global/scripts/app.min.js" type="text/javascript"></script>
+<!-- END THEME GLOBAL SCRIPTS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="../assets/pages/scripts/login-5.min.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+<!-- BEGIN THEME LAYOUT SCRIPTS -->
+<!-- END THEME LAYOUT SCRIPTS -->
 </body>
+
 </html>

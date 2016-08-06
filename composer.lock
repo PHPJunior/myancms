@@ -4,9 +4,131 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "760a94110990d18b246ff328edd890ca",
-    "content-hash": "2e823b05ceb98e9ea3ab3c77bd0b7781",
+    "hash": "67a878317bca412a7436dd371199ba87",
+    "content-hash": "ce79dcfacd743a9f64c66aa13bc38bea",
     "packages": [
+        {
+            "name": "arcanedev/log-viewer",
+            "version": "3.10.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ARCANEDEV/LogViewer.git",
+                "reference": "e00027530991254d0fbf60018709bd973a077124"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ARCANEDEV/LogViewer/zipball/e00027530991254d0fbf60018709bd973a077124",
+                "reference": "e00027530991254d0fbf60018709bd973a077124",
+                "shasum": ""
+            },
+            "require": {
+                "arcanedev/support": "~3.0",
+                "php": ">=5.5.9",
+                "psr/log": "~1.0"
+            },
+            "require-dev": {
+                "phpunit/phpcov": "~2.0|~3.0",
+                "phpunit/phpunit": "~4.0|~5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.10.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Arcanedev\\LogViewer\\": "src/"
+                },
+                "files": [
+                    "constants.php",
+                    "helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ARCANEDEV",
+                    "email": "arcanedev.maroc@gmail.com",
+                    "homepage": "https://github.com/arcanedev-maroc",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Provides a Log Viewer for Laravel 5",
+            "homepage": "https://github.com/ARCANEDEV/LogViewer",
+            "keywords": [
+                "arcanedev",
+                "arcanesoft",
+                "laravel",
+                "log",
+                "log viewer",
+                "log-viewer",
+                "logviewer"
+            ],
+            "time": "2016-07-12 20:48:37"
+        },
+        {
+            "name": "arcanedev/support",
+            "version": "3.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ARCANEDEV/Support.git",
+                "reference": "8662c2c08131ba21218f0b056e8f6b67c3d7381e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ARCANEDEV/Support/zipball/8662c2c08131ba21218f0b056e8f6b67c3d7381e",
+                "reference": "8662c2c08131ba21218f0b056e8f6b67c3d7381e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/filesystem": "~5.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "phpunit/phpcov": "~2.0|~3.0",
+                "phpunit/phpunit": "~4.0|~5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Arcanedev\\Support\\": "src/"
+                },
+                "files": [
+                    "constants.php",
+                    "helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ARCANEDEV",
+                    "email": "arcanedev.maroc@gmail.com",
+                    "homepage": "https://github.com/arcanedev-maroc"
+                }
+            ],
+            "description": "ARCANEDEV Support Helpers",
+            "homepage": "https://github.com/ARCANEDEV/Support",
+            "keywords": [
+                "arcanedev",
+                "arcanesoft",
+                "laravel",
+                "support"
+            ],
+            "time": "2016-08-06 12:58:23"
+        },
         {
             "name": "cartalyst/sentinel",
             "version": "v2.0.12",
@@ -1160,42 +1282,6 @@
                 "shell"
             ],
             "time": "2016-03-09 05:03:14"
-        },
-        {
-            "name": "rachidlaasri/laravel-installer",
-            "version": "1.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/RachidLaasri/LaravelInstaller.git",
-                "reference": "22814e1fa773d5a84dae1162e72e91aeca49db06"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/RachidLaasri/LaravelInstaller/zipball/22814e1fa773d5a84dae1162e72e91aeca49db06",
-                "reference": "22814e1fa773d5a84dae1162e72e91aeca49db06",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "RachidLaasri\\LaravelInstaller\\": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Rachid Laasri",
-                    "email": "rashidlaasri@gmail.com"
-                }
-            ],
-            "description": "Laravel web installer",
-            "time": "2015-12-30 19:31:20"
         },
         {
             "name": "swiftmailer/swiftmailer",
